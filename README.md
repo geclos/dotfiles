@@ -1,3 +1,3 @@
 # dotfiles
 
-Vim & bash configurations I use in my machines.
+Vim/bash/git/tmux configurations I use in my machines.
