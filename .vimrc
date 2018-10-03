@@ -19,6 +19,7 @@ Plug 'janko-m/vim-test'
 Plug 'wincent/ferret'
 Plug 'junegunn/goyo.vim'
 Plug 'matze/vim-move'
+Plug 'christophermca/meta5'       " Best colorscheme`"
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -165,3 +166,4 @@ augroup END
 :command Q q
 
 set noswapfile
+colorscheme meta5
