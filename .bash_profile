@@ -315,3 +315,9 @@ fixssh() {
     fi
   done
 }
+
+# Disable flow control. Ctrl-s + Ctrl-q
+stty stop ''
+stty start ''
+stty -ixon
+stty -ixoff
