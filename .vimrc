@@ -20,9 +20,12 @@ Plug 'wincent/ferret'
 Plug 'junegunn/goyo.vim'
 Plug 'matze/vim-move'
 Plug 'christophermca/meta5'       " Best colorscheme`"
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+
 
 call plug#end()
 
@@ -121,10 +124,19 @@ map <leader>p :set invpaste paste?<CR>
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
+" UltiSnip
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" Neomake
+autocmd! BufReadPost,BufWritePost * Neomake
+
 let g:neomake_ruby_enabled_makers = ['rubocop', 'reek']
 let g:neomake_ruby_rubocop_maker = { 'exe': 'bundle', 'args': ['exec', 'rubocop', '--format', 'emacs'] }
 let g:neomake_ruby_reek_maker = { 'exe': 'bundle', 'args': ['exec', 'reek'] }
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 
 " FZF
 let g:fzf_command_prefix = 'FZF'
