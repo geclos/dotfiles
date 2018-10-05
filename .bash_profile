@@ -28,6 +28,7 @@ source ~/.prompt
     export PATH="~/Documents/factorial/factorial-frontend/node_modules/bin:$PATH"
     export PATH="~/.nvm/versions/node/v6.13.1/bin:$PATH"
     export PATH="/usr/local/sbin:$PATH"
+    export PATH=./node_modules/.bin:$PATH
 
     source ~/.profile
     source ~/.bashrc
