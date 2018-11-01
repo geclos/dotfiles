@@ -179,3 +179,8 @@ augroup END
 
 set noswapfile
 colorscheme meta5
+
+augroup vagrant
+	au!
+	au BufRead,BufNewFile Vagrantfile set filetype=ruby
+augroup END
