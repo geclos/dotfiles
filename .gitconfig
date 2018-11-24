@@ -98,8 +98,3 @@
 	name = Gerard Clos 
 	email = clos.gerard@gmail.com
 
-## Hack needed because Go language get packages in this way:
-## git clone https://github.com/something/lol
-## Git is the best :muscle: Thank you Linus!
-[url "git@github.com:"]
-	insteadOf = https://github.com/
