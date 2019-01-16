@@ -141,6 +141,7 @@ let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
 " FZF
 let g:fzf_command_prefix = 'FZF'
 let g:fzf_commits_log_options = '--pretty=oneline'
+let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 " Javascript
 let g:javascript_plugin_flow = 1 " flow support
