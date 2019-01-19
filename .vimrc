@@ -134,7 +134,7 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:javascript_plugin_flow = 1 " flow support
 let g:javascript_plugin_jsdoc = 1 " js docs support
 
-nnoremap <leader><space> :FZFFiles<cr>
+nnoremap <leader><space> :FZFGFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
 
 " Tell vim to remember certain things when we exit
