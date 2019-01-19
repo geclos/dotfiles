@@ -1,27 +1,17 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'https://github.com/wesQ3/vim-windowswap'
 Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'scrooloose/nerdtree'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-dispatch'
-Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Raimondi/delimitMate'
 Plug 'plasticboy/vim-markdown'
-Plug 'digitaltoad/vim-pug'
-Plug 'diepm/vim-rest-console'
 Plug 'neomake/neomake'
-Plug 'janko-m/vim-test'
 Plug 'wincent/ferret'
-Plug 'junegunn/goyo.vim'
 Plug 'matze/vim-move'
 Plug 'christophermca/meta5'       " Best colorscheme`"
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -48,7 +38,9 @@ set hlsearch        " To highlight all search matches
 set nowrap          " Don't wrap lines
 set backspace=indent,eol,start " Backspace options
 
-:set t_Co=256       " For certain color-limited terminals
+" colorscheme
+colorscheme meta5
+
 filetype on               " Turn on filetype detection
 filetype plugin indent on " Turn on indentation
 syntax on                 " Turn on syntax on
@@ -124,11 +116,6 @@ map <leader>p :set invpaste paste?<CR>
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
-" UltiSnip
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " Neomake
 autocmd! BufReadPost,BufWritePost * Neomake
 
@@ -150,26 +137,8 @@ let g:javascript_plugin_jsdoc = 1 " js docs support
 nnoremap <leader><space> :FZFFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
 
-" Sequences
-nmap <leader>s :for i in range(1,10) \| put ='192.168.0.'.i \| endfor
-
-" Goyo mode toggler
-map <leader>z :Goyo<CR>
-
 " Tell vim to remember certain things when we exit
 set viminfo='10,\"100,:20,%,n~/.viminfo
-
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
-
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
 
 " Typo aliases
 :command WQ wq
@@ -177,14 +146,8 @@ augroup END
 :command Wq wq
 :command W w
 :command Q q
-
-set noswapfile
-colorscheme meta5
-
-augroup vagrant
-	au!
-	au BufRead,BufNewFile Vagrantfile set filetype=ruby
-augroup END
+:command Qa qa
+:command QA qa
 
 " remove whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
