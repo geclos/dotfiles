@@ -1,17 +1,22 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'scrooloose/nerdtree'
-Plug 'bling/vim-airline'
-Plug 'tpope/vim-surround'
-Plug 'scrooloose/nerdcommenter'
 Plug 'Raimondi/delimitMate'
-Plug 'plasticboy/vim-markdown'
-Plug 'neomake/neomake'
-Plug 'wincent/ferret'
-Plug 'matze/vim-move'
+Plug 'alvan/vim-closetag'         " Auto close tags
+Plug 'ap/vim-css-color'           " Colorize hexadecimal colors
+Plug 'bling/vim-airline'
 Plug 'christophermca/meta5'       " Best colorscheme`"
+Plug 'ervandew/supertab'          " Perform all your vim insert mode completions with Tab
+Plug 'matze/vim-move'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'neomake/neomake'
+Plug 'pangloss/vim-javascript'
+Plug 'plasticboy/vim-markdown'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'vim-syntastic/syntastic'    " Syntax support
+Plug 'wellle/targets.vim'         " Modify faster (){}[] contents
+Plug 'wincent/ferret'             " Enhanced multi-file search for Vim
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
