@@ -12,6 +12,7 @@ ln -snf "${PWD}/tmux.conf" ~/.tmux.conf
 
 # BASH
 message "Bash"
+ln -snf "${PWD}/prompt" ~/.prompt
 ln -snf "${PWD}/bashrc" ~/.bashrc
 ln -snf "${PWD}/bash_profile" ~/.bash_profile
 
@@ -30,4 +31,4 @@ message "Vim"
 ln -snf "${PWD}/vimrc" ~/.vimrc
 
 # Execute it immediately
-source ~/.bashrc
+source ~/.bash_profile

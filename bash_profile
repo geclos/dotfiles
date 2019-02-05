@@ -19,8 +19,6 @@
 #   1. ENVIRONMENT CONFIGURATION
 #   -------------------------------
 
-source ~/.prompt
-
 #   Set Paths
 #   ------------------------------------------------------------
     export PATH="~/Library/Python/2.7/bin:$PATH"
@@ -30,6 +28,7 @@ source ~/.prompt
     export PATH="/usr/local/sbin:$PATH"
     export PATH=./node_modules/.bin:$PATH
 
+    source ~/.prompt
     source ~/.profile
     source ~/.bashrc
 #   Set Default Editor (change 'Nano' to the editor of your choice)
@@ -44,7 +43,7 @@ source ~/.prompt
 #   Ansible default path to vault password
 #   --------------------------------------
     export ANSIBLE_VAULT_PASSWORD_FILE=~/.vault_password
-    
+
 #   Add color to terminal
 #   (this is all commented out as I use Mac Terminal Profiles)
 #   from http://osxdaily.com/2012/02/21/add-color-to-the-terminal-in-mac-os-x/
