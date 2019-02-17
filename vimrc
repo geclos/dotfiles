@@ -44,7 +44,7 @@ set nowrap          " Don't wrap lines
 set backspace=indent,eol,start " Backspace options
 
 " colorscheme
-colorscheme meta5
+colorscheme morning
 
 filetype on               " Turn on filetype detection
 filetype plugin indent on " Turn on indentation
