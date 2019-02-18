@@ -139,6 +139,9 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 let g:javascript_plugin_flow = 1 " flow support
 let g:javascript_plugin_jsdoc = 1 " js docs support
 
+" Nerdtree
+let g:NERDTreeDirArrows=0
+
 nnoremap <leader><space> :FZFFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
 
