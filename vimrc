@@ -17,6 +17,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-syntastic/syntastic'    " Syntax support
 Plug 'wellle/targets.vim'         " Modify faster (){}[] contents
 Plug 'wincent/ferret'             " Enhanced multi-file search for Vim
+Plug 'zivyangll/git-blame.vim'    " Git blame integration
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
