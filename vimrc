@@ -7,17 +7,18 @@ Plug 'bling/vim-airline'
 Plug 'christophermca/meta5'       " Best colorscheme`"
 Plug 'ervandew/supertab'          " Perform all your vim insert mode completions with Tab
 Plug 'matze/vim-move'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'neomake/neomake'
-Plug 'pangloss/vim-javascript'
-Plug 'plasticboy/vim-markdown'
-Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'tpope/vim-surround'
+Plug 'maxmellon/vim-jsx-pretty'   " jsx support
+Plug 'neomake/neomake'            " Async processes in Vim
+Plug 'pangloss/vim-javascript'    " ES6+ support
+Plug 'plasticboy/vim-markdown'    " Markdown support
+Plug 'scrooloose/nerdcommenter'   " Comment helpers
+Plug 'scrooloose/nerdtree'        " File tree
+Plug 'tpope/vim-surround'         " Surround helpers
 Plug 'vim-syntastic/syntastic'    " Syntax support
 Plug 'wellle/targets.vim'         " Modify faster (){}[] contents
 Plug 'wincent/ferret'             " Enhanced multi-file search for Vim
 Plug 'tpope/vim-fugitive'         " Git goodies
+Plug 'leafgarland/typescript-vim' " Typescript support
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
