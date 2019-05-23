@@ -9,8 +9,8 @@ Plug 'ervandew/supertab'          " Perform all your vim insert mode completions
 Plug 'matze/vim-move'
 Plug 'maxmellon/vim-jsx-pretty'   " jsx support
 Plug 'neomake/neomake'            " Async processes in Vim
-Plug 'pangloss/vim-javascript'    " ES6+ support
 Plug 'plasticboy/vim-markdown'    " Markdown support
+Plug 'pangloss/vim-javascript'    " ES6+ support
 Plug 'scrooloose/nerdcommenter'   " Comment helpers
 Plug 'scrooloose/nerdtree'        " File tree
 Plug 'tpope/vim-surround'         " Surround helpers
@@ -19,6 +19,7 @@ Plug 'wellle/targets.vim'         " Modify faster (){}[] contents
 Plug 'wincent/ferret'             " Enhanced multi-file search for Vim
 Plug 'tpope/vim-fugitive'         " Git goodies
 Plug 'leafgarland/typescript-vim' " Typescript support
+Plug 'Valloric/MatchTagAlways'    " Highlights matching html tags
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -161,3 +162,25 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 
 " remove whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
+
+" Enable MatchTagAlways in the following file types
+let g:mta_use_matchparen_group = 1
+let g:mta_filetypes = {
+    \ 'html' : 1,
+    \ 'xhtml' : 1,
+    \ 'xml' : 1,
+    \ 'jinja' : 1,
+    \ 'tsx' : 1,
+    \ 'jsx' : 1,
+    \}
+
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.tsx,*.jsx'
+
+" dict
+" Disables auto-close if not in a "valid" region (based on filetype)
+let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ }
