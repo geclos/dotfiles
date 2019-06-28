@@ -20,6 +20,7 @@ Plug 'wincent/ferret'             " Enhanced multi-file search for Vim
 Plug 'tpope/vim-fugitive'         " Git goodies
 Plug 'leafgarland/typescript-vim' " Typescript support
 Plug 'Valloric/MatchTagAlways'    " Highlights matching html tags
+Plug 'jnurmine/Zenburn'           " Zenburn colorscheme
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -47,7 +48,7 @@ set nowrap          " Don't wrap lines
 set backspace=indent,eol,start " Backspace options
 
 " colorscheme
-colorscheme meta5
+colorscheme zenburn
 
 filetype on               " Turn on filetype detection
 filetype plugin indent on " Turn on indentation
