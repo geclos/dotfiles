@@ -1,30 +1,22 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'Raimondi/delimitMate'
-Plug 'alvan/vim-closetag'         " Auto close tags
-Plug 'ap/vim-css-color'           " Colorize hexadecimal colors
-Plug 'bling/vim-airline'
-Plug 'christophermca/meta5'       " Best colorscheme`"
-Plug 'ervandew/supertab'          " Perform all your vim insert mode completions with Tab
-Plug 'matze/vim-move'
-Plug 'maxmellon/vim-jsx-pretty'   " jsx support
-Plug 'neomake/neomake'            " Async processes in Vim
-Plug 'plasticboy/vim-markdown'    " Markdown support
-Plug 'pangloss/vim-javascript'    " ES6+ support
-Plug 'scrooloose/nerdcommenter'   " Comment helpers
-Plug 'scrooloose/nerdtree'        " File tree
-Plug 'tpope/vim-surround'         " Surround helpers
-Plug 'vim-syntastic/syntastic'    " Syntax support
-Plug 'wellle/targets.vim'         " Modify faster (){}[] contents
-Plug 'wincent/ferret'             " Enhanced multi-file search for Vim
-Plug 'tpope/vim-fugitive'         " Git goodies
-Plug 'leafgarland/typescript-vim' " Typescript support
-Plug 'Valloric/MatchTagAlways'    " Highlights matching html tags
-Plug 'jnurmine/Zenburn'           " Zenburn colorscheme
-
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
+Plug 'AndrewRadev/splitjoin.vim'                " Transform oneliners into multiple lines of code
+Plug 'FooSoft/vim-argwrap'                      " Argument wrapping and unwrapping
+Plug 'Valloric/MatchTagAlways'                  " Highlights matching html tags
+Plug 'alvan/vim-closetag'                       " Auto close tags
+Plug 'ap/vim-css-color'                         " Colorize hexadecimal colors
+Plug 'bling/vim-airline'                        " Fancy status bar
+Plug 'brooth/far.vim'                           " Find and replace in the whole project
+Plug 'ervandew/supertab'                        " Perform all your vim insert mode completions with Tab
+Plug 'jgdavey/vim-blockle'                      " Switch between do/end and {} blocks in Ruby
+Plug 'jnurmine/Zenburn'                         " Zenburn colorscheme
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
+Plug 'junegunn/fzf.vim' " FZF
+Plug 'matze/vim-move'                           " Move lines easily
+Plug 'scrooloose/nerdcommenter'                 " Comment helpers
+Plug 'scrooloose/nerdtree'                      " File tree
+Plug 'tpope/vim-fugitive'                       " Git goodies
+Plug 'tpope/vim-surround'                       " Surround helpers
 
 call plug#end()
 
@@ -58,13 +50,10 @@ scriptencoding utf-8
 set encoding=utf-8
 
 let mapleader=" "   " Sets the leader key
-
 let g:move_key_modifier = 'C' " Move plugin
-
 let g:fzf_buffers_jump = 1 " Disable jump to the existing window if possible
 
 set switchbuf=vsplit " Split new buffer in quickfix
-
 set list listchars=tab:.. " Display extra whitespace
 
 " Undo file
@@ -78,20 +67,6 @@ cab uniq %s/^\(.*\)\(\n\1\)\+$/\1/
 set ttimeout
 set ttimeoutlen=100
 
-" Tab completion options
-set wildmode=list:longest,list:full
-set complete=.,w,t
-set wildmenu
-set wildignore+=.git,.svn
-set wildignore+=*.o,*.obj,*.jpg,*.png,*.gif,*.log,*.gz,*.bin,*.gem,*.rbc,*.class
-set wildignore+=*.min.js,**/node_modules/**,**/images/**
-set wildignore+=**/assets/**/original/**,**/assets/**/thumb/**,**/assets/**/small/**
-set wildignore+=tmp,public,vendor/bundle/*,vendor/cache/*,test/fixtures/*,vendor/gems/*,spec/cov,a/*
-
-" Delete without saving it to the registry. (Uses black hole registry)
-noremap  x "_x
-vnoremap  x "_x
-
 " Remove the highlighted search after two esc
 nnoremap <esc><esc> :noh<return><esc>
 
@@ -104,9 +79,6 @@ map <up>    <nop>
 map <down>  <nop>
 map <left>  <nop>
 map <right> <nop>
-
-" Disable markdown folding
-let g:vim_markdown_folding_disabled = 1
 
 " Set swap and backup directories outside your working directory
 " the double slash path at the end allows you to avoid collisions
@@ -125,26 +97,10 @@ map <leader>p :set invpaste paste?<CR>
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
-" Neomake
-autocmd! BufReadPost,BufWritePost * Neomake
-
-let g:neomake_ruby_enabled_makers = ['rubocop', 'reek']
-let g:neomake_ruby_rubocop_maker = { 'exe': 'bundle', 'args': ['exec', 'rubocop', '--format', 'emacs'] }
-let g:neomake_ruby_reek_maker = { 'exe': 'bundle', 'args': ['exec', 'reek'] }
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
-
 " FZF
 let g:fzf_command_prefix = 'FZF'
 let g:fzf_commits_log_options = '--pretty=oneline'
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
-
-" Javascript
-let g:javascript_plugin_flow = 1 " flow support
-let g:javascript_plugin_jsdoc = 1 " js docs support
-
-" Nerdtree
-let g:NERDTreeDirArrows=0
 
 nnoremap <leader><space> :FZFFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
@@ -161,27 +117,27 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 :command Qa qa
 :command QA qa
 
-" remove whitespace on save
-autocmd BufWritePre * %s/\s\+$//e
-
 " Enable MatchTagAlways in the following file types
 let g:mta_use_matchparen_group = 1
 let g:mta_filetypes = {
     \ 'html' : 1,
+    \ 'jinja' : 1,
+    \ 'jsx' : 1,
+    \ 'tsx' : 1,
     \ 'xhtml' : 1,
     \ 'xml' : 1,
-    \ 'jinja' : 1,
-    \ 'tsx' : 1,
-    \ 'jsx' : 1,
     \}
 
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.tsx,*.jsx'
 
-" dict
-" Disables auto-close if not in a "valid" region (based on filetype)
+" Disables auto-close if not in a valid region (based on filetype)
 let g:closetag_regions = {
     \ 'typescript.tsx': 'jsxRegion,tsxRegion',
     \ 'javascript.jsx': 'jsxRegion',
     \ }
+
+" remove whitespace on save
+autocmd BufWritePre * %s/\s\+$//e
+
