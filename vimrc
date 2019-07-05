@@ -3,20 +3,27 @@ call plug#begin('~/.vim/plugged')
 Plug 'AndrewRadev/splitjoin.vim'                " Transform oneliners into multiple lines of code
 Plug 'FooSoft/vim-argwrap'                      " Argument wrapping and unwrapping
 Plug 'Valloric/MatchTagAlways'                  " Highlights matching html tags
-Plug 'alvan/vim-closetag'                       " Auto close tags
+Plug 'alvan/vim-closetag'                       " Auto close html/xml tags
+Plug 'jremmen/vim-ripgrep'                      " Global grep, faster than usual grep
 Plug 'ap/vim-css-color'                         " Colorize hexadecimal colors
 Plug 'bling/vim-airline'                        " Fancy status bar
 Plug 'brooth/far.vim'                           " Find and replace in the whole project
 Plug 'ervandew/supertab'                        " Perform all your vim insert mode completions with Tab
 Plug 'jgdavey/vim-blockle'                      " Switch between do/end and {} blocks in Ruby
 Plug 'jnurmine/Zenburn'                         " Zenburn colorscheme
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
-Plug 'junegunn/fzf.vim' " FZF
+Plug 'kana/vim-smartinput'                      " Auto close {])\"'
 Plug 'matze/vim-move'                           " Move lines easily
-Plug 'scrooloose/nerdcommenter'                 " Comment helpers
 Plug 'scrooloose/nerdtree'                      " File tree
+Plug 'sheerun/vim-polyglot'                     " Add language support for many languages
+Plug 'tpope/vim-commentary'                     " Helpers for easy code comments
+Plug 'tpope/vim-endwise'                        " Add end keyword in Ruby methods
 Plug 'tpope/vim-fugitive'                       " Git goodies
 Plug 'tpope/vim-surround'                       " Surround helpers
+Plug 'w0rp/ale'                                 " Linter
+Plug 'tpope/vim-abolish'                        " Automated substitutions for words I write incorrectly 50% of the time
+
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
+Plug 'junegunn/fzf.vim' " FZF
 
 call plug#end()
 
@@ -25,7 +32,6 @@ set tabstop=2       " An indentation every four columns
 set softtabstop=2   " Let backspace delete indent
 set expandtab       " Convert tab to spaces
 set autoindent      " Copy indent from current line when starting a new line
-                    " (typing <CR> in Insert mode or when using the "o" or "O" command).
 set ruler           " Show the line and column number of the cursor position, separated by a comma.
 set mouse=a         " Enable the use of the mouse.
 set incsearch       " While typing a search command, show immediately where the so far typed pattern matches.
@@ -86,6 +92,27 @@ map <right> <nop>
 set backupdir=~/.vim/tmpdir//,.
 set directory=~/.vim/tmpdir//,.
 
+" ALE {{{
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_column_always = 1
+
+let g:ale_linters = {
+      \ 'ruby': ['rubocop', 'ruby'],
+      \}
+
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'ruby': ['rubocop'],
+      \ 'javascript': ['prettier'],
+      \ 'typescript': ['prettier'],
+      \}
+
+nnoremap <silent><leader>lf :ALEFix<CR>
+nnoremap <silent><leader>ld :ALEDetail<CR>
+nnoremap <silent><leader>lo :lopen<CR>
+nnoremap <silent><leader>lc :lclose<CR>
+"}}}
+
 " NERDTree configuration
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.git']
 map <leader>n :NERDTreeToggle<CR>
@@ -104,6 +131,12 @@ let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
 nnoremap <leader><space> :FZFFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
+
+" Argwrap mapping
+nnoremap <silent> <leader>a :ArgWrap<CR>
+
+" RipGrep mapping
+nnoremap <leader>s :Rg<cr>
 
 " Tell vim to remember certain things when we exit
 set viminfo='10,\"100,:20,%,n~/.viminfo
@@ -140,4 +173,3 @@ let g:closetag_regions = {
 
 " remove whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
-
