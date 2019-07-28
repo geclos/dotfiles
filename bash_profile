@@ -321,3 +321,5 @@ stty stop ''
 stty start ''
 stty -ixon
 stty -ixoff
+
+export PATH="$HOME/.cargo/bin:$PATH"
