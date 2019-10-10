@@ -98,6 +98,8 @@ let g:ale_sign_column_always = 1
 
 let g:ale_linters = {
       \ 'ruby': ['rubocop', 'ruby'],
+      \ 'typescript': ['tsserver'],
+      \ 'javascript': ['eslint', 'flow'],
       \}
 
 let g:ale_fixers = {
@@ -173,3 +175,6 @@ let g:closetag_regions = {
 
 " remove whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
+
+" set text width to 80 columns for markdown
+au BufRead,BufNewFile *.md setlocal textwidth=80
