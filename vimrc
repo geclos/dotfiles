@@ -116,6 +116,8 @@ nnoremap <silent><leader>lc :lclose<CR>
 "}}}
 
 " NERDTree configuration
+let g:NERDTreeNodeDelimiter = "\u00a0"
+let g:NERDTreeDirArrows=0
 let NERDTreeIgnore=['\.rbc$', '\~$', '\.git']
 map <leader>n :NERDTreeToggle<CR>
 map <leader>m :NERDTreeFind<CR>
