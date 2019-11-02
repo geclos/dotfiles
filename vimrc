@@ -131,7 +131,7 @@ let g:CommandTMaxHeight=20
 " FZF
 let g:fzf_command_prefix = 'FZF'
 let g:fzf_commits_log_options = '--pretty=oneline'
-let $FZF_DEFAULT_COMMAND = 'ag -g ""'
+let $FZF_DEFAULT_COMMAND = 'ag --ignore node_modules -g ""'
 
 nnoremap <leader><space> :FZFFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
