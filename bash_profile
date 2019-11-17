@@ -29,8 +29,8 @@
     export PATH=./node_modules/.bin:$PATH
 
     source ~/.prompt
-    source ~/.profile
-    source ~/.bashrc
+#   source ~/.profile
+#   source ~/.bashrc
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
     export EDITOR=/usr/bin/vim
