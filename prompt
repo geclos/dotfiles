@@ -96,7 +96,7 @@ bash_prompt_command() {
   fi
 
 
-  PS1="${P_YELLOW}${P_PWD}${BRANCH_COLOR}${P_GIT} ${P_RED}${P_GIT_STATUS}${P_YELLOW}❯ ${P_RESET}"
+  PS1="${P_YELLOW}${P_PWD}${BRANCH_COLOR}${P_GIT} ${P_RED}${P_GIT_STATUS}${P_YELLOW}💀 ${P_RESET}"
 }
 
 parse_git_branch() {
