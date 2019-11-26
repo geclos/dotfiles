@@ -97,7 +97,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
 
 let g:ale_linters = {
-      \ 'ruby': ['rubocop', 'ruby'],
+      \ 'ruby': ['rubocop'],
       \ 'typescript': ['tsserver'],
       \ 'javascript': ['eslint', 'flow'],
       \}
@@ -180,3 +180,7 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " set text width to 80 columns for markdown
 au BufRead,BufNewFile *.md setlocal textwidth=80
+
+" configure Far to use ripgrep
+let g:far#source = 'rg'
+let g:far#window_layout = 'tab'
