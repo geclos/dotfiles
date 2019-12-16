@@ -19,8 +19,10 @@ Plug 'tpope/vim-commentary'                     " Helpers for easy code comments
 Plug 'tpope/vim-endwise'                        " Add end keyword in Ruby methods
 Plug 'tpope/vim-fugitive'                       " Git goodies
 Plug 'tpope/vim-surround'                       " Surround helpers
+Plug 'tpope/vim-dispatch'                       " Dispatch tests from vim
 Plug 'w0rp/ale'                                 " Linter
 Plug 'tpope/vim-abolish'                        " Automated substitutions for words I write incorrectly 50% of the time
+Plug 'janko/vim-test'                           " Run tests from vim
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
 Plug 'junegunn/fzf.vim' " FZF
@@ -184,3 +186,11 @@ au BufRead,BufNewFile *.md setlocal textwidth=80
 " configure Far to use ripgrep
 let g:far#source = 'rg'
 let g:far#window_layout = 'tab'
+
+" Vim test
+let test#strategy='dispatch'
+
+nnoremap <leader>tf :TestFile<CR>
+nnoremap <leader>tl :TestNearest<CR>
+nnoremap <leader>tr :TestLast<CR>
+nnoremap <leader>to :Copen<CR>
