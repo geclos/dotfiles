@@ -21,6 +21,7 @@
 
 #   Set Paths
 #   ------------------------------------------------------------
+    export PATH="$HOME/.cargo/bin:$PATH"
     export PATH="~/Library/Python/2.7/bin:$PATH"
     export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
     export PATH="~/Documents/factorial/factorial-frontend/node_modules/bin:$PATH"
@@ -29,8 +30,7 @@
     export PATH=./node_modules/.bin:$PATH
 
     source ~/.prompt
-#   source ~/.profile
-#   source ~/.bashrc
+
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
     export EDITOR=/usr/bin/vim
@@ -321,5 +321,3 @@ stty stop ''
 stty start ''
 stty -ixon
 stty -ixoff
-
-export PATH="$HOME/.cargo/bin:$PATH"
