@@ -9,7 +9,6 @@ Plug 'ap/vim-css-color'                         " Colorize hexadecimal colors
 Plug 'bling/vim-airline'                        " Fancy status bar
 Plug 'brooth/far.vim'                           " Find and replace in the whole project
 Plug 'ervandew/supertab'                        " Perform all your vim insert mode completions with Tab
-Plug 'jgdavey/vim-blockle'                      " Switch between do/end and {} blocks in Ruby
 Plug 'jnurmine/Zenburn'                         " Zenburn colorscheme
 Plug 'kana/vim-smartinput'                      " Auto close {])\"'
 Plug 'matze/vim-move'                           " Move lines easily
@@ -29,6 +28,7 @@ Plug 'junegunn/fzf.vim' " FZF
 
 call plug#end()
 
+set exrc            " Execute local vimrc files
 set shiftwidth=2    " Use indents of 2 spaces
 set tabstop=2       " An indentation every four columns
 set softtabstop=2   " Let backspace delete indent
@@ -99,7 +99,7 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
 
 let g:ale_linters = {
-      \ 'ruby': ['rubocop'],
+      \ 'ruby': ['rubocop', 'sorbet'],
       \ 'typescript': ['eslint', 'tsserver'],
       \ 'javascript': ['eslint', 'flow'],
       \}
@@ -194,3 +194,9 @@ nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>tl :TestNearest<CR>
 nnoremap <leader>tr :TestLast<CR>
 nnoremap <leader>to :Copen<CR>
+
+" Vim splitjoin
+let g:splitjoin_ruby_curly_braces = 0
+let g:splitjoin_ruby_hanging_args = 0
+
+set secure " Prevents local vimrc files to automatically execute commands with autocmd

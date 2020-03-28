@@ -105,6 +105,11 @@ alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\
 #   ------------------------------------------------------------
     showa () { /usr/bin/grep --color=always -i -a1 $@ ~/Library/init/bash/aliases.bash | grep -v '^\s*$' | less -FSRXc ; }
 
+#   findreplace: find and replace instance in regex path
+    findreplace () {
+      find . | grep $1 | xargs sed -i $2
+    }
+
 #   -------------------------------
 #   3. FILE AND FOLDER MANAGEMENT
 #   -------------------------------
