@@ -4,24 +4,24 @@ Plug 'AndrewRadev/splitjoin.vim'                " Transform oneliners into multi
 Plug 'FooSoft/vim-argwrap'                      " Argument wrapping and unwrapping
 Plug 'Valloric/MatchTagAlways'                  " Highlights matching html tags
 Plug 'alvan/vim-closetag'                       " Auto close html/xml tags
-Plug 'jremmen/vim-ripgrep'                      " Global grep, faster than usual grep
 Plug 'ap/vim-css-color'                         " Colorize hexadecimal colors
 Plug 'bling/vim-airline'                        " Fancy status bar
 Plug 'brooth/far.vim'                           " Find and replace in the whole project
+Plug 'majutsushi/tagbar'                        " Tells you what function you are in in the taskbar
+Plug 'dracula/vim', { 'as': 'dracula' }         " Dracula color scheme
 Plug 'ervandew/supertab'                        " Perform all your vim insert mode completions with Tab
-Plug 'jnurmine/Zenburn'                         " Zenburn colorscheme
+Plug 'janko/vim-test'                           " Run tests from vim
+Plug 'jremmen/vim-ripgrep'                      " Global grep, faster than usual grep
 Plug 'kana/vim-smartinput'                      " Auto close {])\"'
 Plug 'matze/vim-move'                           " Move lines easily
 Plug 'scrooloose/nerdtree'                      " File tree
-Plug 'sheerun/vim-polyglot'                     " Add language support for many languages
+Plug 'tpope/vim-abolish'                        " Automated substitutions for words I write incorrectly 50% of the time
 Plug 'tpope/vim-commentary'                     " Helpers for easy code comments
+Plug 'tpope/vim-dispatch'                       " Dispatch tests from vim
 Plug 'tpope/vim-endwise'                        " Add end keyword in Ruby methods
 Plug 'tpope/vim-fugitive'                       " Git goodies
 Plug 'tpope/vim-surround'                       " Surround helpers
-Plug 'tpope/vim-dispatch'                       " Dispatch tests from vim
 Plug 'w0rp/ale'                                 " Linter
-Plug 'tpope/vim-abolish'                        " Automated substitutions for words I write incorrectly 50% of the time
-Plug 'janko/vim-test'                           " Run tests from vim
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
 Plug 'junegunn/fzf.vim' " FZF
@@ -47,12 +47,13 @@ set hlsearch        " To highlight all search matches
 set nowrap          " Don't wrap lines
 set backspace=indent,eol,start " Backspace options
 
-" colorscheme
-colorscheme zenburn
-
 filetype on               " Turn on filetype detection
 filetype plugin indent on " Turn on indentation
-syntax on                 " Turn on syntax on
+syntax on                 " Turn syntax on
+
+" Dark color scheme
+let g:dracula_italic = 0
+colorscheme dracula
 
 scriptencoding utf-8
 set encoding=utf-8
@@ -198,5 +199,49 @@ nnoremap <leader>to :Copen<CR>
 " Vim splitjoin
 let g:splitjoin_ruby_curly_braces = 0
 let g:splitjoin_ruby_hanging_args = 0
+
+" airline configuration
+let g:airline#extensions#ale#enabled = 1
+let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " Don't display encoding unless it is unexpected
+let g:airline#extensions#hunks#enabled = 0
+let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr'])
+let g:airline_theme = 'dracula'
+let g:airline_powerline_fonts = 1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = '»'
+let g:airline_left_sep = '▶'
+let g:airline_right_sep = '«'
+let g:airline_right_sep = '◀'
+let g:airline_symbols.linenr = '␊'
+let g:airline_symbols.linenr = '␤'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
+let g:airline_symbols.paste = 'ρ'
+let g:airline_symbols.paste = 'Þ'
+let g:airline_symbols.paste = '∥'
+let g:airline_symbols.whitespace = 'Ξ'
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = ''
+" Use abbreviations to display modes
+let g:airline_mode_map = {
+      \ '__' : '-',
+      \ 'n'  : 'N',
+      \ 'i'  : 'I',
+      \ 'R'  : 'R',
+      \ 'c'  : 'C',
+      \ 'v'  : 'V',
+      \ 'V'  : 'V',
+      \ 's'  : 'S',
+      \ 'S'  : 'S'
+      \ }
 
 set secure " Prevents local vimrc files to automatically execute commands with autocmd
