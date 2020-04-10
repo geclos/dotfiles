@@ -18,19 +18,6 @@
 #   -------------------------------
 #   1. ENVIRONMENT CONFIGURATION
 #   -------------------------------
-
-#   Set Paths
-#   ------------------------------------------------------------
-    export PATH="$HOME/.cargo/bin:$PATH"
-    export PATH="~/Library/Python/2.7/bin:$PATH"
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    export PATH="~/Documents/factorial/factorial-frontend/node_modules/bin:$PATH"
-    export PATH="~/.nvm/versions/node/v6.13.1/bin:$PATH"
-    export PATH="/usr/local/sbin:$PATH"
-    export PATH=./node_modules/.bin:$PATH
-
-    source ~/.prompt
-
 #   Set Default Editor (change 'Nano' to the editor of your choice)
 #   ------------------------------------------------------------
     export EDITOR=/usr/bin/vim
@@ -50,6 +37,7 @@
 #   ------------------------------------------------------------
 #   export CLICOLOR=1
 #   export LSCOLORS=ExFxBxDxCxegedabagacad
+    source ~/.prompt
 
 #   -----------------------------
 #   2. MAKE TERMINAL BETTER
@@ -307,8 +295,6 @@ httpHeaders () { /usr/bin/curl -I -L $@ ; }             # httpHeaders:      Grab
 #   e.g.: hdiutil create -size 10m 10MB.dmg
 #   the above create files that are almost all zeros - if random bytes are desired
 #   then use: ~/Dev/Perl/randBytes 1048576 > 10MB.dat
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Function to restore broken ssh-agent session
 # https://coderwall.com/p/_s_xda/fix-ssh-agent-in-reattached-tmux-session-shells
