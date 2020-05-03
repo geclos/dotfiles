@@ -8,12 +8,12 @@ message ()
 
 # TMUX
 message "Tmux"
-ln -snf "${PWD}/tmux.conf" ~/.tmux.conf
+cp "${PWD}/tmux.conf" ~/.tmux.conf
 
 # BASH
 message "Bash"
-ln -snf "${PWD}/prompt" ~/.prompt
-ln -snf "${PWD}/bash_profile" ~/.bash_profile
+cp "${PWD}/prompt" ~/.prompt
+cp "${PWD}/bash_profile" ~/.bash_profile
 
 # BASH FZF
 message "FZF"
@@ -23,11 +23,11 @@ yes | ~/.fzf/install > /dev/null 2>&1
 
 # GIT
 message "Git"
-ln -sf "${PWD}/gitconfig" ~/.gitconfig
+cp "${PWD}/gitconfig" ~/.gitconfig
 
 # VIM
 message "Vim"
-ln -snf "${PWD}/vimrc" ~/.vimrc
+cp "${PWD}/vimrc" ~/.vimrc
 
 # Execute it immediately
 source ~/.bash_profile
