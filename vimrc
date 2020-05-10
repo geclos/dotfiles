@@ -23,6 +23,7 @@ Plug 'tpope/vim-fugitive'                       " Git goodies
 Plug 'tpope/vim-surround'                       " Surround helpers
 Plug 'w0rp/ale'                                 " Linter
 Plug 'christoomey/vim-tmux-navigator'           " Integration with tmux
+Plug 'sheerun/vim-polyglot'                     " Support for many languages
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
 Plug 'junegunn/fzf.vim' " FZF
@@ -245,4 +246,5 @@ let g:airline_mode_map = {
       \ 'S'  : 'S'
       \ }
 
-set secure " Prevents local vimrc files to automatically execute commands with autocmd
+set secure                                        " Prevents local vimrc files to automatically execute commands with autocmd
+autocmd BufRead,BufNewFile *.md setlocal spell    " Spell checking in markdown files
