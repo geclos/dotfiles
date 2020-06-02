@@ -95,7 +95,7 @@ alias lr='ls -R | grep ":$" | sed -e '\''s/:$//'\'' -e '\''s/[^-][^\/]*\//--/g'\
 
 #   findreplace: find and replace instance in regex path
     findreplace () {
-      find . | grep $1 | xargs sed -i $2
+      find . ! -path './node_modules/*' | grep $1 | xargs sed -i "$2"
     }
 
 #   -------------------------------
