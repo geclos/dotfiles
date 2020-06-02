@@ -22,7 +22,6 @@ Plug 'tpope/vim-endwise'                        " Add end keyword in Ruby method
 Plug 'tpope/vim-fugitive'                       " Git goodies
 Plug 'tpope/vim-surround'                       " Surround helpers
 Plug 'w0rp/ale'                                 " Linter
-Plug 'christoomey/vim-tmux-navigator'           " Integration with tmux
 Plug 'sheerun/vim-polyglot'                     " Support for many languages
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
