@@ -9,6 +9,8 @@ Plug 'bling/vim-airline'                        " Fancy status bar
 Plug 'brooth/far.vim'                           " Find and replace in the whole project
 Plug 'majutsushi/tagbar'                        " Tells you what function you are in in the taskbar
 Plug 'dracula/vim', { 'as': 'dracula' }         " Dracula color scheme
+Plug 'rakr/vim-one'                             " One color scheme
+Plug 'altercation/vim-colors-solarized'         " Solarized color scheme
 Plug 'ervandew/supertab'                        " Perform all your vim insert mode completions with Tab
 Plug 'janko/vim-test'                           " Run tests from vim
 Plug 'jremmen/vim-ripgrep'                      " Global grep, faster than usual grep
@@ -47,17 +49,23 @@ set shell=/bin/bash " Used shell for executed commands
 set hlsearch        " To highlight all search matches
 set nowrap          " Don't wrap lines
 set backspace=indent,eol,start " Backspace options
+set termguicolors
 
 filetype on               " Turn on filetype detection
 filetype plugin indent on " Turn on indentation
 syntax on                 " Turn syntax on
 
-" Dark color scheme
-let g:dracula_italic = 0
-colorscheme dracula
-
-scriptencoding utf-8
+" Characters encoding
 set encoding=utf-8
+scriptencoding utf-8
+
+" Color scheme
+set background=light
+
+" let g:dracula_italic = 0
+" colorscheme dracula
+" colorscheme solarized
+colorscheme one
 
 let mapleader=" "   " Sets the leader key
 let g:move_key_modifier = 'C' " Move plugin
@@ -247,3 +255,6 @@ let g:airline_mode_map = {
 
 set secure                                        " Prevents local vimrc files to automatically execute commands with autocmd
 autocmd BufRead,BufNewFile *.md setlocal spell    " Spell checking in markdown files
+
+nnoremap <C-d> }
+nnoremap <C-u> {
