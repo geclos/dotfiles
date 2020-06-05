@@ -60,7 +60,7 @@ set encoding=utf-8
 scriptencoding utf-8
 
 " Color scheme
-set background=light
+set background=dark
 
 " let g:dracula_italic = 0
 " colorscheme dracula
