@@ -65,6 +65,11 @@ set background=dark
 " let g:dracula_italic = 0
 " colorscheme dracula
 " colorscheme solarized
+"
+" HACK: This is a hack to make One theme work inside Tmux
+set t_8f=[38;2;%lu;%lu;%lum
+set t_8b=[48;2;%lu;%lu;%lum
+" HACK: End of hack
 colorscheme one
 
 let mapleader=" "   " Sets the leader key
