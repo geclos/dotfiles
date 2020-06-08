@@ -166,6 +166,7 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 :command WQ wq
 :command Wa wa
 :command Wq wq
+:command Wqa wqa
 :command W w
 :command Q q
 :command Qa qa
