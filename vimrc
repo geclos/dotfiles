@@ -3,20 +3,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'AndrewRadev/splitjoin.vim'                " Transform oneliners into multiple lines of code
 Plug 'FooSoft/vim-argwrap'                      " Argument wrapping and unwrapping
 Plug 'Valloric/MatchTagAlways'                  " Highlights matching html tags
+Plug 'altercation/vim-colors-solarized'         " Solarized color scheme
 Plug 'alvan/vim-closetag'                       " Auto close html/xml tags
 Plug 'ap/vim-css-color'                         " Colorize hexadecimal colors
 Plug 'bling/vim-airline'                        " Fancy status bar
 Plug 'brooth/far.vim'                           " Find and replace in the whole project
-Plug 'majutsushi/tagbar'                        " Tells you what function you are in in the taskbar
 Plug 'dracula/vim', { 'as': 'dracula' }         " Dracula color scheme
-Plug 'rakr/vim-one'                             " One color scheme
-Plug 'altercation/vim-colors-solarized'         " Solarized color scheme
 Plug 'ervandew/supertab'                        " Perform all your vim insert mode completions with Tab
 Plug 'janko/vim-test'                           " Run tests from vim
 Plug 'jremmen/vim-ripgrep'                      " Global grep, faster than usual grep
 Plug 'kana/vim-smartinput'                      " Auto close {])\"'
+Plug 'majutsushi/tagbar'                        " Tells you what function you are in in the taskbar
 Plug 'matze/vim-move'                           " Move lines easily
+Plug 'rakr/vim-one'                             " One color scheme
 Plug 'scrooloose/nerdtree'                      " File tree
+Plug 'sheerun/vim-polyglot'                     " Support for many languages
 Plug 'tpope/vim-abolish'                        " Automated substitutions for words I write incorrectly 50% of the time
 Plug 'tpope/vim-commentary'                     " Helpers for easy code comments
 Plug 'tpope/vim-dispatch'                       " Dispatch tests from vim
@@ -24,7 +25,7 @@ Plug 'tpope/vim-endwise'                        " Add end keyword in Ruby method
 Plug 'tpope/vim-fugitive'                       " Git goodies
 Plug 'tpope/vim-surround'                       " Surround helpers
 Plug 'w0rp/ale'                                 " Linter
-Plug 'sheerun/vim-polyglot'                     " Support for many languages
+Plug 'wellle/targets.vim'                       " Enhancements to Vim's text selection
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
 Plug 'junegunn/fzf.vim' " FZF
