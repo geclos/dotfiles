@@ -30,6 +30,15 @@ Plug 'wellle/targets.vim'                       " Enhancements to Vim's text sel
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
 Plug 'junegunn/fzf.vim' " FZF
 
+if has('python3')
+  Plug 'SirVer/ultisnips'
+elseif has('python')
+  Plug 'SirVer/ultisnips', {
+      \   'tag': '3.2',
+      \   'dir': get(g:, 'plug_home', '~/.vim/bundle') . '/ultisnips_py2',
+      \ }
+endif
+
 call plug#end()
 
 set exrc            " Execute local vimrc files
