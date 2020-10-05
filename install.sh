@@ -28,6 +28,7 @@ cp "${PWD}/gitconfig" ~/.gitconfig
 # VIM
 message "Vim"
 cp "${PWD}/vimrc" ~/.vimrc
+cp -fr "${PWD}/UltiSnips" ~/.vim/UltiSnips
 
 # Execute it immediately
 source ~/.bash_profile
