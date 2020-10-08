@@ -29,6 +29,7 @@ cp "${PWD}/gitconfig" ~/.gitconfig
 message "Vim"
 cp "${PWD}/vimrc" ~/.vimrc
 mkdir ~/.vim
+mkdir ~/.vim/UltiSnips
 cp -fr "${PWD}/UltiSnips" ~/.vim/UltiSnips
 
 # Execute it immediately
