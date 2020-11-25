@@ -3,41 +3,37 @@ call plug#begin('~/.vim/plugged')
 Plug 'AndrewRadev/splitjoin.vim'                " Transform oneliners into multiple lines of code
 Plug 'FooSoft/vim-argwrap'                      " Argument wrapping and unwrapping
 Plug 'Valloric/MatchTagAlways'                  " Highlights matching html tags
-Plug 'altercation/vim-colors-solarized'         " Solarized color scheme
 Plug 'alvan/vim-closetag'                       " Auto close html/xml tags
 Plug 'ap/vim-css-color'                         " Colorize hexadecimal colors
 Plug 'bling/vim-airline'                        " Fancy status bar
 Plug 'brooth/far.vim'                           " Find and replace in the whole project
+Plug 'majutsushi/tagbar'                        " Tells you what function you are in in the taskbar
 Plug 'dracula/vim', { 'as': 'dracula' }         " Dracula color scheme
+Plug 'rakr/vim-one'                             " One color scheme
+Plug 'altercation/vim-colors-solarized'         " Solarized color scheme
 Plug 'ervandew/supertab'                        " Perform all your vim insert mode completions with Tab
 Plug 'janko/vim-test'                           " Run tests from vim
 Plug 'jremmen/vim-ripgrep'                      " Global grep, faster than usual grep
-Plug 'kana/vim-smartinput'                      " Auto close {])\"'
-Plug 'majutsushi/tagbar'                        " Tells you what function you are in in the taskbar
 Plug 'matze/vim-move'                           " Move lines easily
-Plug 'rakr/vim-one'                             " One color scheme
 Plug 'scrooloose/nerdtree'                      " File tree
-Plug 'sheerun/vim-polyglot'                     " Support for many languages
 Plug 'tpope/vim-abolish'                        " Automated substitutions for words I write incorrectly 50% of the time
 Plug 'tpope/vim-commentary'                     " Helpers for easy code comments
 Plug 'tpope/vim-dispatch'                       " Dispatch tests from vim
-Plug 'tpope/vim-endwise'                        " Add end keyword in Ruby methods
 Plug 'tpope/vim-fugitive'                       " Git goodies
 Plug 'tpope/vim-surround'                       " Surround helpers
+Plug 'tpope/vim-rhubarb'                        " Gihtub hooks for vim fugitive
 Plug 'w0rp/ale'                                 " Linter
+Plug 'MaxMEllon/vim-jsx-pretty'                 " JSX better code syntax
+Plug 'SirVer/ultisnips'                         " Snippets :fire:
+Plug 'honza/vim-snippets'                       " Some default snippets
+Plug 'vim-ruby/vim-ruby'                        " Ruby better code syntax
 Plug 'wellle/targets.vim'                       " Enhancements to Vim's text selection
+Plug 'mg979/vim-visual-multi'                   " Column editing
+Plug 'cohama/lexima.vim'                        " Auto close parentheses, ruby blocks and more
+Plug 'morhetz/gruvbox'                          " Brownish theme, it's fancy
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
 Plug 'junegunn/fzf.vim' " FZF
-
-if has('python3')
-  Plug 'SirVer/ultisnips'
-elseif has('python')
-  Plug 'SirVer/ultisnips', {
-      \   'tag': '3.2',
-      \   'dir': get(g:, 'plug_home', '~/.vim/bundle') . '/ultisnips_py2',
-      \ }
-endif
 
 call plug#end()
 
@@ -56,31 +52,43 @@ set vb              " Visual flash bell bell
 set nocompatible    " Disable compatibility with vi
 set laststatus=2    " Display the status line always
 set shell=/bin/bash " Used shell for executed commands
-set hlsearch        " To highlight all search matches
+set hlsearch        " To high all search matches
 set nowrap          " Don't wrap lines
 set backspace=indent,eol,start " Backspace options
-set termguicolors
+set cursorline      " Highlight current line
+set number          " Line count absolute
 
 filetype on               " Turn on filetype detection
 filetype plugin indent on " Turn on indentation
 syntax on                 " Turn syntax on
 
+" Shenanigans for correct color schemes on terminal
+set termguicolors
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
 " Characters encoding
 set encoding=utf-8
 scriptencoding utf-8
 
-" Color scheme
-set background=dark
-
 " let g:dracula_italic = 0
 " colorscheme dracula
 " colorscheme solarized
-"
+
 " HACK: This is a hack to make One theme work inside Tmux
-set t_8f=[38;2;%lu;%lu;%lum
-set t_8b=[48;2;%lu;%lu;%lum
+" set t_8f=[38;2;%lu;%lu;%lum
+" set t_8b=[48;2;%lu;%lu;%lum
 " HACK: End of hack
-colorscheme one
+" colorscheme one
+
+let g:gruvbox_italic=1
+colorscheme gruvbox
+
+" Colorscheme variant
+set background=light
 
 let mapleader=" "   " Sets the leader key
 let g:move_key_modifier = 'C' " Move plugin
@@ -122,18 +130,18 @@ set directory=~/.vim/tmpdir//,.
 " ALE {{{
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
-
 let g:ale_linters = {
-      \ 'ruby': ['rubocop', 'sorbet'],
+      \ 'ruby': ['rubocop'],
       \ 'typescript': ['eslint', 'tsserver'],
       \ 'javascript': ['eslint', 'flow'],
       \}
-
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
       \ 'ruby': ['rubocop'],
       \ 'javascript': ['prettier'],
+      \ 'javascriptreact': ['prettier'],
       \ 'typescript': ['prettier'],
+      \ 'typescriptreact': ['prettier'],
       \}
 
 nnoremap <silent><leader>lf :ALEFix<CR>
@@ -158,7 +166,7 @@ let g:CommandTMaxHeight=20
 " FZF
 let g:fzf_command_prefix = 'FZF'
 let g:fzf_commits_log_options = '--pretty=oneline'
-let $FZF_DEFAULT_COMMAND = 'ag --ignore node_modules -g ""'
+let $FZF_DEFAULT_COMMAND = "rg --files --no-ignore-vcs -g '!node_modules/*'"
 
 nnoremap <leader><space> :FZFFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
@@ -230,7 +238,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " Don't display encoding unless it is unexpected
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr'])
-let g:airline_theme = 'dracula'
+let g:airline_theme = 'gruvbox'
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
@@ -272,5 +280,50 @@ let g:airline_mode_map = {
 set secure                                        " Prevents local vimrc files to automatically execute commands with autocmd
 autocmd BufRead,BufNewFile *.md setlocal spell    " Spell checking in markdown files
 
+" JSX pretty conf
+let g:vim_jsx_pretty_colorful_config = 1
+
+" UltiSnips conf
+let g:UltiSnipsSnippetsDir = $HOME.'/.vim'
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+let g:UltiSnipsEditSplit = 'vertical'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+
+" Navigate to next/previous blank line
 nnoremap <C-d> }
 nnoremap <C-u> {
+
+" lexima configuration
+call lexima#add_rule({
+      \   'at': '\%#',
+      \   'char': '{',
+      \   'input': '{<Space>',
+      \   'input_after': '<Space>}',
+      \   'filetype': ['ruby'],
+      \ })
+call lexima#add_rule({
+      \   'at': '\%#',
+      \   'char': '#',
+      \   'input': '#{',
+      \   'input_after': '}',
+      \   'filetype': ['ruby', 'elixir'],
+      \   'syntax': ['rubyString', 'rubyStringDelimiter',
+      \              'elixirString', 'elixirStringDelimiter'],
+      \ })
+call lexima#add_rule({
+      \   'at': '\%#',
+      \   'char': '$',
+      \   'input': '${',
+      \   'input_after': '}',
+      \   'filetype': ['javascript', 'typescript'],
+      \   'syntax': ['sqlTemplateString', 'typescriptTemplate'],
+      \ })
+call lexima#add_rule({
+      \   'at': '\({\|\<do\>\)\s*\%#',
+      \   'except': '\(|\)\%#\(|\)',
+      \   'char': '<Bar>',
+      \   'input': '<Bar>',
+      \   'input_after': '<Bar>',
+      \   'filetype': ['ruby'],
+      \ })
+call lexima#add_rule({'char': '<BS>', 'at': '|\%#|', 'delete': 1})
