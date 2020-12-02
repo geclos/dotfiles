@@ -166,7 +166,7 @@ let g:CommandTMaxHeight=20
 " FZF
 let g:fzf_command_prefix = 'FZF'
 let g:fzf_commits_log_options = '--pretty=oneline'
-let $FZF_DEFAULT_COMMAND = "rg --files --no-ignore-vcs -g '!node_modules/*'"
+let $FZF_DEFAULT_COMMAND = "rg --files --no-ignore-vcs -g '!node_modules/*' -g '!coverage/*'"
 
 nnoremap <leader><space> :FZFFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
