@@ -2,35 +2,37 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'AndrewRadev/splitjoin.vim'                " Transform oneliners into multiple lines of code
 Plug 'FooSoft/vim-argwrap'                      " Argument wrapping and unwrapping
+Plug 'MaxMEllon/vim-jsx-pretty'                 " JSX better code syntax
+Plug 'SirVer/ultisnips'                         " Snippets :fire:
 Plug 'Valloric/MatchTagAlways'                  " Highlights matching html tags
+Plug 'altercation/vim-colors-solarized'         " Solarized color scheme
 Plug 'alvan/vim-closetag'                       " Auto close html/xml tags
 Plug 'ap/vim-css-color'                         " Colorize hexadecimal colors
 Plug 'bling/vim-airline'                        " Fancy status bar
 Plug 'brooth/far.vim'                           " Find and replace in the whole project
-Plug 'majutsushi/tagbar'                        " Tells you what function you are in in the taskbar
+Plug 'cespare/vim-toml'                         " Toml syntax
+Plug 'cohama/lexima.vim'                        " Auto close parentheses, ruby blocks and more
 Plug 'dracula/vim', { 'as': 'dracula' }         " Dracula color scheme
-Plug 'rakr/vim-one'                             " One color scheme
-Plug 'altercation/vim-colors-solarized'         " Solarized color scheme
 Plug 'ervandew/supertab'                        " Perform all your vim insert mode completions with Tab
+Plug 'honza/vim-snippets'                       " Some default snippets
 Plug 'janko/vim-test'                           " Run tests from vim
 Plug 'jremmen/vim-ripgrep'                      " Global grep, faster than usual grep
+Plug 'leafgarland/typescript-vim'               " Typescript syntax
+Plug 'majutsushi/tagbar'                        " Tells you what function you are in in the taskbar
 Plug 'matze/vim-move'                           " Move lines easily
+Plug 'mg979/vim-visual-multi'                   " Column editing
+Plug 'morhetz/gruvbox'                          " Brownish theme, it's fancy
+Plug 'rakr/vim-one'                             " One color scheme
 Plug 'scrooloose/nerdtree'                      " File tree
 Plug 'tpope/vim-abolish'                        " Automated substitutions for words I write incorrectly 50% of the time
 Plug 'tpope/vim-commentary'                     " Helpers for easy code comments
 Plug 'tpope/vim-dispatch'                       " Dispatch tests from vim
 Plug 'tpope/vim-fugitive'                       " Git goodies
-Plug 'tpope/vim-surround'                       " Surround helpers
 Plug 'tpope/vim-rhubarb'                        " Gihtub hooks for vim fugitive
-Plug 'w0rp/ale'                                 " Linter
-Plug 'MaxMEllon/vim-jsx-pretty'                 " JSX better code syntax
-Plug 'SirVer/ultisnips'                         " Snippets :fire:
-Plug 'honza/vim-snippets'                       " Some default snippets
+Plug 'tpope/vim-surround'                       " Surround helpers
 Plug 'vim-ruby/vim-ruby'                        " Ruby better code syntax
+Plug 'w0rp/ale'                                 " Linter
 Plug 'wellle/targets.vim'                       " Enhancements to Vim's text selection
-Plug 'mg979/vim-visual-multi'                   " Column editing
-Plug 'cohama/lexima.vim'                        " Auto close parentheses, ruby blocks and more
-Plug 'morhetz/gruvbox'                          " Brownish theme, it's fancy
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
 Plug 'junegunn/fzf.vim' " FZF
@@ -74,8 +76,7 @@ endif
 set encoding=utf-8
 scriptencoding utf-8
 
-" let g:dracula_italic = 0
-" colorscheme dracula
+colorscheme dracula
 " colorscheme solarized
 
 " HACK: This is a hack to make One theme work inside Tmux
@@ -84,11 +85,11 @@ scriptencoding utf-8
 " HACK: End of hack
 " colorscheme one
 
-let g:gruvbox_italic=1
-colorscheme gruvbox
+" let g:gruvbox_italic=1
+" colorscheme gruvbox
 
 " Colorscheme variant
-set background=light
+set background=dark
 
 let mapleader=" "   " Sets the leader key
 let g:move_key_modifier = 'C' " Move plugin
