@@ -10,6 +10,10 @@ message ()
 message "Tmux"
 cp "${PWD}/tmux.conf" ~/.tmux.conf
 
+# ZSH
+message "Zshrc"
+cp "${PWD}/zshrc" ~/.zshrc
+
 # BASH
 message "Bash"
 cp "${PWD}/prompt" ~/.prompt
@@ -33,4 +37,19 @@ mkdir ~/.vim/UltiSnips
 cp -fr "${PWD}/UltiSnips" ~/.vim/UltiSnips
 
 # Execute it immediately
-source ~/.bash_profile
+if [ -n "$ZSH_VERSION" ]; then
+  source ~/.zshrc
+elif [ -n "$BASH_VERSION" ]; then
+  source ~/.bash_profile
+fi
+
+# Install Vim Plug
+message "Install vim-plug"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Install Ripgrep
+message "Install ripgrep"
+if ! command -v rg &> /dev/null; then
+  sudo apt-get install -y ripgrep
+fi
