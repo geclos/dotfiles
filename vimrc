@@ -76,6 +76,8 @@ endif
 set encoding=utf-8
 scriptencoding utf-8
 
+" Uncomment if you have problems with syntax highlighting within tmux sessions
+" let g:dracula_italic = 0
 colorscheme dracula
 " colorscheme solarized
 
