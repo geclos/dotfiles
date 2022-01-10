@@ -59,6 +59,8 @@ set nowrap          " Don't wrap lines
 set backspace=indent,eol,start " Backspace options
 set cursorline      " Highlight current line
 set number          " Line count absolute
+set novisualbell    " turn off visual bell
+
 
 filetype on               " Turn on filetype detection
 filetype plugin indent on " Turn on indentation

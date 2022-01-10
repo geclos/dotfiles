@@ -31,9 +31,8 @@ cp "${PWD}/gitconfig" ~/.gitconfig
 
 # VIM
 message "Vim"
+mkdir -p ~/.vim/UltiSnips
 cp "${PWD}/vimrc" ~/.vimrc
-mkdir ~/.vim
-mkdir ~/.vim/UltiSnips
 cp -fr "${PWD}/UltiSnips" ~/.vim/UltiSnips
 
 # Execute it immediately
@@ -53,3 +52,8 @@ message "Ripgrep"
 if ! command -v rg &> /dev/null; then
   sudo apt-get install -y ripgrep
 fi
+
+# Install NeoVim
+message "NeoVim"
+mkdir ~/.config
+cp -fr "${PWD}/nvim" ~/.config
