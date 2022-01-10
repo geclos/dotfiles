@@ -31,9 +31,14 @@ cp "${PWD}/gitconfig" ~/.gitconfig
 
 # VIM
 message "Vim"
-mkdir -p ~/.vim/UltiSnips
-cp "${PWD}/vimrc" ~/.vimrc
-cp -fr "${PWD}/UltiSnips" ~/.vim/UltiSnips
+if [[ ! -d /etc ]]
+then
+  mkdir -p ~/.vim/UltiSnips
+  cp "${PWD}/vimrc" ~/.vimrc
+  cp -fr "${PWD}/UltiSnips" ~/.vim/UltiSnips
+else
+  echo "There's a vim configuration already installed. Skipping installation."
+fi
 
 # Execute it immediately
 if [ -n "$ZSH_VERSION" ]; then
@@ -55,5 +60,10 @@ fi
 
 # Install NeoVim
 message "NeoVim"
-mkdir ~/.config
-cp -fr "${PWD}/nvim" ~/.config
+if [[ ! -d /etc ]]
+then
+  mkdir ~/.config
+  cp -fr "${PWD}/nvim" ~/.config
+else
+  echo "There's a Neovim configuration already installed. Skipping installation."
+fi
