@@ -31,7 +31,7 @@ cp "${PWD}/gitconfig" ~/.gitconfig
 
 # VIM
 message "Vim"
-if [[ ! -d /etc ]]
+if [[ ! -d ~/.vim ]]
 then
   mkdir -p ~/.vim/UltiSnips
   cp "${PWD}/vimrc" ~/.vimrc
@@ -60,7 +60,7 @@ fi
 
 # Install NeoVim
 message "NeoVim"
-if [[ ! -d /etc ]]
+if [[ ! -d ~/.config/nvim ]]
 then
   mkdir ~/.config
   cp -fr "${PWD}/nvim" ~/.config
