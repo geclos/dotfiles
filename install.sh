@@ -44,12 +44,12 @@ elif [ -n "$BASH_VERSION" ]; then
 fi
 
 # Install Vim Plug
-message "Install vim-plug"
+message "Vim-plug"
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Install Ripgrep
-message "Install ripgrep"
+message "Ripgrep"
 if ! command -v rg &> /dev/null; then
   sudo apt-get install -y ripgrep
 fi
