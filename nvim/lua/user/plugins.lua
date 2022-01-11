@@ -57,6 +57,7 @@ return packer.startup(function(use)
   use "tpope/vim-rhubarb"                        -- Gihtub hooks for vim fugitive
   use "tpope/vim-surround"                       -- Surround helpers
   use "wellle/targets.vim"                       -- Enhancements to Vim's text selection
+  use "lukas-reineke/indent-blankline.nvim"      -- Show indentation.
 
   -- Snippets
   use "L3MON4D3/LuaSnip" --snippet engine
