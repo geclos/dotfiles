@@ -1,8 +1,11 @@
 require "user.options"
 require "user.keymaps"
-require "user.cmp"
+require "user.alpha"
+-- require "user.cmp" TODO: uncomment if you want cmp
+require "user.indent-blankline"
 require "user.plugins"
+require "user.project"
 require "user.colorscheme"
 require "user.lsp"
-require "user.nvim-tree"
 require "user.telescope"
+require "user.nvimtree"

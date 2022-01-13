@@ -51,12 +51,18 @@ keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Telescope
-keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>f", ":lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<CR>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>b", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>b", ":Buffers<CR>", opts)
 
 -- Nvimtree
 keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
+
+-- vim-test
+keymap("n", "<leader>tf", ":TestFile -strategy=neovim<CR>", opts) 
+keymap("n", "<leader>tl", ":TestNearest -strategy=neovim<CR>", opts) 
+keymap("n", "<leader>tr", ":TestLast -strategy=neovim<CR>", opts) 
+keymap("n", "<leader>to", ":Copen -strategy=neovim<CR>", opts) 
 
 -- Terminal --
 -- Better terminal navigation
@@ -64,4 +70,3 @@ keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-

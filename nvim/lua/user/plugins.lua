@@ -58,14 +58,17 @@ return packer.startup(function(use)
   use "tpope/vim-surround"                       -- Surround helpers
   use "wellle/targets.vim"                       -- Enhancements to Vim's text selection
   use "lukas-reineke/indent-blankline.nvim"      -- Show indentation.
+  use "goolord/alpha-nvim"                       -- Welcome screen
+  use "ahmedkhalf/project.nvim"                  -- Project detection
+  use 'janko/vim-test'                           -- Run tests from vim
 
-
+  -- TODO: Uncomment if you want cmp
   -- Command completions
-  use "hrsh7th/nvim-cmp" -- The completion plugin
-  use "hrsh7th/cmp-buffer" -- buffer completions
-  use "hrsh7th/cmp-path" -- path completions
-  use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "hrsh7th/cmp-nvim-lsp" -- Required by the lsp plugin
+  -- use "hrsh7th/nvim-cmp" -- The completion plugin
+  -- use "hrsh7th/cmp-buffer" -- buffer completions
+  -- use "hrsh7th/cmp-path" -- path completions
+  -- use "hrsh7th/cmp-cmdline" -- cmdline completions
+  -- use "hrsh7th/cmp-nvim-lsp" -- Required by the lsp plugin
 
   -- Snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -76,6 +79,11 @@ return packer.startup(function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
+  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+
+  -- fzf 
+  use {'junegunn/fzf'}
+  use {'junegunn/fzf.vim', after = 'fzf'} 
 
   -- NvimTree
   use 'kyazdani42/nvim-web-devicons'
