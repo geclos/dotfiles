@@ -29,10 +29,6 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
--- Move text up and down
-keymap("n", "<C-j>", "<Esc>:m .+1<CR>==g", opts)
-keymap("n", "<C-k>", "<Esc>:m .-2<CR>==g", opts)
-
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
