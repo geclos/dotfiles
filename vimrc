@@ -33,6 +33,8 @@ Plug 'tpope/vim-surround'                       " Surround helpers
 Plug 'vim-ruby/vim-ruby'                        " Ruby better code syntax
 Plug 'w0rp/ale'                                 " Linter
 Plug 'wellle/targets.vim'                       " Enhancements to Vim's text selection
+Plug 'tomasiser/vim-code-dark'                  " vscode-like theme
+
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " FZF
 Plug 'junegunn/fzf.vim' " FZF
