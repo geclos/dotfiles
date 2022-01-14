@@ -82,7 +82,7 @@ scriptencoding utf-8
 
 " Uncomment if you have problems with syntax highlighting within tmux sessions
 " let g:dracula_italic = 0
-colorscheme dracula
+colorscheme codedark
 " colorscheme solarized
 
 " HACK: This is a hack to make One theme work inside Tmux
@@ -245,7 +245,7 @@ let g:airline#extensions#ale#enabled = 1
 let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]' " Don't display encoding unless it is unexpected
 let g:airline#extensions#hunks#enabled = 0
 let g:airline_section_z = airline#section#create(['linenr', 'maxlinenr'])
-let g:airline_theme = 'gruvbox'
+let g:airline_theme = 'codedark'
 let g:airline_powerline_fonts = 1
 
 if !exists('g:airline_symbols')
