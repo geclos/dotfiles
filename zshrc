@@ -1,123 +1,108 @@
-#   -------------------------------
-#   1. ENVIRONMENT CONFIGURATION
-#   -------------------------------
-#   Set Default Editor (change 'Nano' to the editor of your choice)
-#   ------------------------------------------------------------
-export EDITOR=/usr/bin/vim
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-#   -----------------------------
-#   2. MAKE TERMINAL BETTER
-#   -----------------------------
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
-alias cp='cp -iv'                           # Preferred 'cp' implementation
-alias mv='mv -iv'                           # Preferred 'mv' implementation
-alias mkdir='mkdir -pv'                     # Preferred 'mkdir' implementation
-alias ll='ls -FGlAhp --color=auto'          # Preferred 'ls' implementation
-alias ls="ls --color --classify"
-alias less='less -FSRXc'                    # Preferred 'less' implementation
-alias cd..='cd ../'                         # Go back 1 directory level (for fast typers)
-alias ..='cd ../'                           # Go back 1 directory level
-alias ...='cd ../../'                       # Go back 2 directory levels
-alias .3='cd ../../../'                     # Go back 3 directory levels
-alias .4='cd ../../../../'                  # Go back 4 directory levels
-alias .5='cd ../../../../../'               # Go back 5 directory levels
-alias .6='cd ../../../../../../'            # Go back 6 directory levels
-alias edit='subl'                           # edit:         Opens any file in sublime editor
-alias f='open -a Finder ./'                 # f:            Opens current directory in MacOS Finder
-alias ~="cd ~"                              # ~:            Go Home
-alias c='clear'                             # c:            Clear terminal display
-alias which='type -all'                     # which:        Find executables
-alias path='echo -e ${PATH//:/\\n}'         # path:         Echo all executable Paths
-alias show_options='shopt'                  # Show_options: display bash options settings
-alias fix_stty='stty sane'                  # fix_stty:     Restore terminal settings when screwed up
-alias cic='set completion-ignore-case On'   # cic:          Make tab-completion case-insensitive
-alias DT='tee ~/Desktop/terminalOut.txt'    # DT:           Pipe content to file on MacOS Desktop
-alias be='bundle exec'
-alias gp='git push'
-alias gc='git commit -a'
-alias gw="git add --all . && git commit -m 'WIP'"
-alias gs='git status'
-alias gg='git grep'
-alias gd='git diff'
-alias ga='git add --all . && git ci --amend'
-alias grc='git rebase --continue'
-alias gpl='git pull --rebase'
-alias breset='bundle exec rake db:drop && bundle exec rake db:create && bundle exec rake db:schema:load && bundle exec rake db:seed'
-alias migrate='bundle exec rake db:migrate'
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Perform parameter expansion, command substitution and arithmetic expansion in
-# prompts.
-setopt PROMPT_SUBST
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# If a command is issued that can’t be executed as a normal command, and the
-# command is the name of a directory, perform the cd command to that directory.
-setopt AUTO_CD
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# Don't beep on error in ZLE.
-setopt NO_BEEP
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
-# If unset, the cursor would be set to the end of the word if completion is
-# started. Instead, it stays where it is, and completion is done from both
-# ends.
-setopt COMPLETE_IN_WORD
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
-# Zsh sessions will append their history list to the history file, rather than
-# replace it. Thus, multiple parallel zsh sessions will all have the new
-# entries from their history lists added to the history file, in the order that
-# they exit.
-setopt APPEND_HISTORY
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
 
-# save more history than default
-HISTSIZE=50000
-SAVEHIST=50000
-HISTFILE="$HOME/.local/share/zsh/.zsh_history"
-mkdir -p "$(dirname "${HISTFILE}")"
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-# better locking when writing out history file
-setopt HIST_FCNTL_LOCK
-# don't write multiple history entries if the same command is run multiple
-# times in sequence
-setopt HIST_IGNORE_DUPS
-# don't write history entries when the first character of the command is space
-setopt HIST_IGNORE_SPACE
-# we set the history size quite large so don't have to worry about this
-unsetopt HIST_EXPIRE_DUPS_FIRST
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Show a highlighted '%' when the final line of output lacks a trailing
-# newline. Without this, the prompt overdraws that final line.
-setopt PROMPT_SP
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-# Automatically `pushd` when changing directory. `popd` (aliased to `-`)
-# returns to the previous directory on the stack.
-setopt AUTO_PUSHD
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
 
-# If set, perform implicit tees or cats when multiple redirections are
-# attempted.
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  colored-man-pages
+  colorize
+  docker
+  extract
+  git
+  tmux
+)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
 #
-# People don't generally use this feature and it causes some weird unexpected
-# behaviour in edge cases.
-unsetopt MULTIOS
-
-autoload -U compinit && compinit
-# use LS_COLORS for tab-completing files
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-autoload -Uz vcs_info
-precmd_functions+=( vcs_info )
-zstyle ':vcs_info:*' enable git
-# `formats` is used most of the time; `actionformats` is used when in the
-# middle of a rebase, or things like that.
-#
-# Show the branch name (%b) in blue, followed by any
-# additional miscellaneous (%m) info that the git
-# driver provides in yellow. Typically %m will be empty.
-zstyle ':vcs_info:git:*' formats $'%F{blue}%b%F{yellow}%m%{\x1b[0m%} '
-# When in a rebase, etc., the format includes square brackets at the end with
-# "current state" (%a) information and the miscellaneous (%m) info (which is
-# typically set during these states)
-zstyle ':vcs_info:git:*' actionformats $'%F{blue}%b%F{grey}%u%c %F{grey}[%F{yellow}%a %m%F{grey}]%{\x1b[0m%} '
-
-state_color="\033[38;5;33m"
-PROMPT=$'%(?.%{$(echo $state_color)%}꩜ .%F{red}✗%?)%f %B%~%b $vcs_info_msg_0_%(!.%F{red}#.%{\x1b[1;38;5;33m%}%%)%{\x1b[0m%} '
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"

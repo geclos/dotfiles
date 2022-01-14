@@ -12,12 +12,13 @@ cp "${PWD}/tmux.conf" ~/.tmux.conf
 
 # ZSH
 message "Zshrc"
-cp "${PWD}/zshrc" ~/.zshrc
-
-# BASH
-message "Bash"
-cp "${PWD}/prompt" ~/.prompt
-cp "${PWD}/bash_profile" ~/.bash_profile
+if [[ ! -d ~/.oh-my-zsh ]]
+then
+  cp "${PWD}/zshrc" ~/.zshrc
+  cp -fr "${PWD}/oh-my-zsh" ~/.oh-my-zsh
+else
+  echo "There's an zsh configuration already installed. Skipping installation."
+fi
 
 # BASH FZF
 message "FZF"
@@ -40,25 +41,7 @@ else
   echo "There's a vim configuration already installed. Skipping installation."
 fi
 
-# Execute it immediately
-if [ -n "$ZSH_VERSION" ]; then
-  source ~/.zshrc
-elif [ -n "$BASH_VERSION" ]; then
-  source ~/.bash_profile
-fi
-
-# Install Vim Plug
-message "Vim-plug"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-# Install Ripgrep
-message "Ripgrep"
-if ! command -v rg &> /dev/null; then
-  sudo apt-get install -y ripgrep
-fi
-
-# Install NeoVim
+# NeoVim
 message "NeoVim"
 if [[ ! -d ~/.config/nvim ]]
 then
@@ -67,3 +50,22 @@ then
 else
   echo "There's a Neovim configuration already installed. Skipping installation."
 fi
+
+# Vim Plug
+message "Vim-plug"
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+# Ripgrep
+message "Ripgrep"
+if ! command -v rg &> /dev/null; then
+  sudo apt-get install -y ripgrep
+fi
+
+# Source config
+if [ -n "$ZSH_VERSION" ]; then
+  source ~/.zshrc
+elif [ -n "$BASH_VERSION" ]; then
+  source ~/.bash_profile
+fi
+
