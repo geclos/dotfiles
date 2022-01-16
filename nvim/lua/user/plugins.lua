@@ -61,6 +61,19 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"                       -- Welcome screen
   use "ahmedkhalf/project.nvim"                  -- Project detection
   use 'janko/vim-test'                           -- Run tests from vim
+  use {
+    "klen/nvim-config-local",
+    config = function()
+      require('config-local').setup {
+        -- Default configuration (optional)
+        config_files = { ".vimrc.lua", ".vimrc" },  -- Config file patterns to load (lua supported)
+        hashfile = vim.fn.stdpath("data") .. "/config-local", -- Where the plugin keeps files data
+        autocommands_create = true,                 -- Create autocommands (VimEnter, DirectoryChanged)
+        commands_create = true,                     -- Create commands (ConfigSource, ConfigEdit, ConfigTrust, ConfigIgnore)
+        silent = false,                             -- Disable plugin messages (Config loaded/ignored)
+      }
+    end
+  }
 
   -- TODO: Uncomment if you want cmp
   -- Command completions

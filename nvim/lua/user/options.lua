@@ -1,6 +1,6 @@
 local options = {
-  expandtab = true,                        -- convert tabs to spaces
   cursorline = true,                       -- highlight the current line
+  expandtab = true,                        -- convert tabs to spaces
   number = true,                           -- set numbered lines
   numberwidth = 2,                         -- set number column width to 2 {default 4}
   relativenumber = false,                  -- set relative numbered lines
