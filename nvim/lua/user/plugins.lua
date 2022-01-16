@@ -61,9 +61,9 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"                       -- Welcome screen
   use "ahmedkhalf/project.nvim"                  -- Project detection
   use 'janko/vim-test'                           -- Run tests from vim
-  use {
-    "klen/nvim-config-local",
-    config = function()
+  use {       
+    "klen/nvim-config-local",                    -- Load local vimrc configs, the configuration needs to be included.
+    config = function()                     
       require('config-local').setup {
         -- Default configuration (optional)
         config_files = { ".vimrc.lua", ".vimrc" },  -- Config file patterns to load (lua supported)
