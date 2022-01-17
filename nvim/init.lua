@@ -1,7 +1,10 @@
+require "user.map" -- Has to go first
+
+require "user.copilot"
 require "user.options"
 require "user.keymaps"
 require "user.alpha"
--- require "user.cmp" TODO: uncomment if you want cmp
+require "user.cmp" 
 require "user.indent-blankline"
 require "user.plugins"
 require "user.project"

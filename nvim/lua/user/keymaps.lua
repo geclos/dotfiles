@@ -29,15 +29,17 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
+-- Close current buffer
+keymap("n", "<leader>c", ":q", opts)
+
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<C-j>", ":m .+1<CR>==", opts)
-keymap("v", "<C-k>", ":m .-2<CR>==", opts)
-keymap("v", "p", '"_dP', opts)
+keymap("v", "<C-j>", "<Esc>:m .+1<CR>==g", opts)
+keymap("v", "<C-k>", "<Esc>:m .-2<CR>==g", opts)
 
 -- Visual Block --
 -- Move text up and down
