@@ -1,6 +1,7 @@
-require "user.map" -- Has to go first
+-- Vimscripts
+vim.cmd("source ~/.config/nvim/lua/user/copilot.vim")
 
-require "user.copilot"
+-- Lua
 require "user.options"
 require "user.keymaps"
 require "user.alpha"
