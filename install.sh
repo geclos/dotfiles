@@ -12,7 +12,7 @@ cp "${PWD}/tmux.conf" ~/.tmux.conf
 
 # ZSH
 message "Zshrc"
-if [[ ! -d ~/.oh-my-zsh ]]
+if [[ ! -d ~/.oh-my-zsh ]] || [[ ! -f ~/.zshrc ]]; 
 then
   cp "${PWD}/zshrc" ~/.zshrc
   cp -fr "${PWD}/oh-my-zsh" ~/.oh-my-zsh
@@ -32,20 +32,19 @@ cp "${PWD}/gitconfig" ~/.gitconfig
 
 # VIM
 message "Vim"
-if [[ ! -d ~/.vim ]]
+if [[ ! -d ~/.vim ]] || [[ ! -f ~/.vimrc ]]; 
 then
-  mkdir -p ~/.vim/UltiSnips
+  cp -fr "${PWD}/vim" ~/.vim
   cp "${PWD}/vimrc" ~/.vimrc
-  cp -fr "${PWD}/UltiSnips" ~/.vim/UltiSnips
 else
-  echo "There's a vim configuration already installed. Skipping installation."
+  echo "There's an vim configuration already installed. Skipping installation."
 fi
 
 # NeoVim
 message "NeoVim"
 if [[ ! -d ~/.config/nvim ]]
 then
-  mkdir ~/.config
+  mkdir -p ~/.config
   cp -fr "${PWD}/nvim" ~/.config
 else
   echo "There's a Neovim configuration already installed. Skipping installation."
