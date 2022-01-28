@@ -62,6 +62,9 @@ keymap("n", "<leader>tl", ":TestNearest -strategy=neovim<CR>", opts)
 keymap("n", "<leader>tr", ":TestLast -strategy=neovim<CR>", opts) 
 keymap("n", "<leader>to", ":Copen -strategy=neovim<CR>", opts) 
 
+-- vim argwrap
+keymap("n", "<leader>a", ":ArgWrap<CR>", opts)
+
 -- Terminal --
 -- Better terminal navigation
 keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
