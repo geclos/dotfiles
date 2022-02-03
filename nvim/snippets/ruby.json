@@ -1,0 +1,9 @@
+{
+  "typed": {
+    "prefix": "typed",
+    "body": [
+      "# typed: true",
+      "# frozen_string_literal: true"
+    ]
+  }
+}
