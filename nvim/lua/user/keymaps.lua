@@ -55,6 +55,7 @@ keymap("n", "<leader>b", ":Buffers<CR>", opts)
 
 -- Nvimtree
 keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
+keymap("n", "<leader>m", ":NvimTreeFindFile<CR>", opts)
 
 -- vim-test
 keymap("n", "<leader>tf", ":TestFile -strategy=neovim<CR>", opts) 

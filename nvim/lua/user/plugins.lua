@@ -106,6 +106,9 @@ return packer.startup(function(use)
   -- Copilot
   use "github/copilot.vim"
 
+  -- Find and replace
+  use 'windwp/nvim-spectre'
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
