@@ -53,9 +53,9 @@ keymap("n", "<leader>f", ":lua require('telescope.builtin').git_files(require('t
 keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>b", ":Buffers<CR>", opts)
 
--- Nvimtree
-keymap("n", "<leader>t", ":NvimTreeToggle<CR>", opts)
-keymap("n", "<leader>m", ":NvimTreeFindFile<CR>", opts)
+-- NerdTree
+keymap("n", "<leader>t", ":NerdTreeToggle<CR>", opts)
+keymap("n", "<leader>m", ":NerdTreeFocus<CR>", opts)
 
 -- vim-test
 keymap("n", "<leader>tf", ":TestFile -strategy=neovim<CR>", opts) 

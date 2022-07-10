@@ -94,9 +94,9 @@ return packer.startup(function(use)
   use "nvim-telescope/telescope.nvim"
   use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
-  -- NvimTree
-  use 'kyazdani42/nvim-web-devicons'
-  use "kyazdani42/nvim-tree.lua"
+  -- NerdTree
+  use("preservim/nerdtree") -- Best tree navigator
+  use("ryanoasis/vim-devicons") -- Icons for NERDTree
 
   -- LSP
   use "neovim/nvim-lspconfig" -- enable LSP
