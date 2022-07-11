@@ -49,13 +49,14 @@ keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Telescope
-keymap("n", "<leader>f", ":lua require('telescope.builtin').git_files(require('telescope.themes').get_dropdown{previewer = false})<CR>", opts)
+keymap("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>b", ":Buffers<CR>", opts)
 
 -- NerdTree
-keymap("n", "<leader>t", ":NERDTreeToggle<CR>", opts)
+keymap("n", "<leader>f", ":NERDTreeFind<CR>", opts)
 keymap("n", "<leader>m", ":NERDTreeFocus<CR>", opts)
+keymap("n", "<leader>t", ":NERDTreeToggle<CR>", opts)
 
 -- vim-test
 keymap("n", "<leader>tf", ":TestFile -strategy=neovim<CR>", opts) 

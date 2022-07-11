@@ -61,6 +61,7 @@ return packer.startup(function(use)
   use "goolord/alpha-nvim"                       -- Welcome screen
   use "ahmedkhalf/project.nvim"                  -- Project detection
   use 'janko/vim-test'                           -- Run tests from vim
+  use 'nvim-treesitter/nvim-treesitter'          -- Fancy language parser
   use {       
     "klen/nvim-config-local",                    -- Load local vimrc configs, the configuration needs to be included.
     config = function()                     
