@@ -14,7 +14,7 @@ cp "${PWD}/tmux.conf" ~/.tmux.conf
 message "Zshrc"
 if [[ ! -d ~/.oh-my-zsh ]] || [[ ! -f ~/.zshrc ]];
 then
-  cp -fr "${PWD}/ohmyzsh" ~/.oh-my-zsh
+  cp -a "${PWD}/ohmyzsh/." ~/.oh-my-zsh/
   cp "${PWD}/zshrc" ~/.zshrc
 else
   echo "There's an zsh configuration already installed. Skipping installation."
