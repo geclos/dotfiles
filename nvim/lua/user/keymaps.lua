@@ -54,8 +54,7 @@ keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>b", ":Buffers<CR>", opts)
 
 -- NerdTree
-keymap("n", "<leader>f", ":NERDTreeFind<CR>", opts)
-keymap("n", "<leader>m", ":NERDTreeFocus<CR>", opts)
+keymap("n", "<leader>m", ":NERDTreeFind<CR>", opts)
 keymap("n", "<leader>t", ":NERDTreeToggle<CR>", opts)
 
 -- vim-test
