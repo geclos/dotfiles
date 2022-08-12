@@ -6,38 +6,30 @@ message ()
   echo -e "Installing \033[1;3${RCOLOR}m$1\033[0m scripts..."
 }
 
-# TMUX
-message "Tmux"
-cp "${PWD}/tmux.conf" ~/.tmux.conf
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 
 # ZSH
 message "Zshrc"
-if [[ ! -d ~/.oh-my-zsh ]] || [[ ! -f ~/.zshrc ]];
+if [[ ! -f ~/.zshrc ]];
 then
-  cp -a "${PWD}/ohmyzsh/." ~/.oh-my-zsh/
   cp "${PWD}/zshrc" ~/.zshrc
 else
   echo "There's an zsh configuration already installed. Skipping installation."
 fi
 
+# TMUX
+message "Tmux"
+cp "${PWD}/tmux.conf" ~/.tmux.conf
+
 # BASH FZF
 message "FZF"
-rm -rf ~/.fzf
-git clone -q https://github.com/junegunn/fzf.git ~/.fzf
-yes | ~/.fzf/install > /dev/null 2>&1
+rm -fr ~/.fzf*
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+yes | ~/.fzf/install
 
 # GIT
 message "Git"
 cp "${PWD}/gitconfig" ~/.gitconfig
-
-# VIM
-message "Vim"
-if [[ ! -d ~/.vim ]] || [[ ! -f ~/.vimrc ]];
-then
-  cp "${PWD}/vimrc" ~/.vimrc
-else
-  echo "There's an vim configuration already installed. Skipping installation."
-fi
 
 # NeoVim
 message "NeoVim"
@@ -48,11 +40,6 @@ then
 else
   echo "There's a Neovim configuration already installed. Skipping installation."
 fi
-
-# Vim Plug
-message "Vim-plug"
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Ripgrep
 message "Ripgrep"
