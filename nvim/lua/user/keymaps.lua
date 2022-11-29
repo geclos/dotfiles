@@ -57,6 +57,9 @@ keymap("n", "<leader>b", ":Buffers<CR>", opts)
 keymap("n", "<leader>m", ":NERDTreeFind<CR>", opts)
 keymap("n", "<leader>t", ":NERDTreeToggle<CR>", opts)
 
+-- Spectre
+keymap("n", "<leader>R", "<cmd>lua require('spectre').open()<CR>", opts)
+
 -- vim-test
 keymap("n", "<leader>tf", ":TestFile -strategy=neovim<CR>", opts) 
 keymap("n", "<leader>tl", ":TestNearest -strategy=neovim<CR>", opts) 
@@ -72,3 +75,6 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+
+-- LSP --
+keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)

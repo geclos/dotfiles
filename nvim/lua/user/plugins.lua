@@ -43,12 +43,12 @@ return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim"                   -- Have packer manage itself
   use "nvim-lua/plenary.nvim"                    -- Useful lua functions used ny lots of plugins
-  use "AndrewRadev/splitjoin.vim"                -- Transform oneliners into multiple lines of code
   use "FooSoft/vim-argwrap"                      -- Argument wrapping and unwrapping
   use "cespare/vim-toml"                         -- Toml syntax
   use "cohama/lexima.vim"                        -- Auto close parentheses, ruby blocks and more
   use "jremmen/vim-ripgrep"                      -- Global grep, faster than usual grep
   use "leafgarland/typescript-vim"               -- Typescript syntax
+  use "peitalin/vim-jsx-typescript"              -- Better jsx highlighting
   use "matze/vim-move"                           -- Move lines easily
   use "mg979/vim-visual-multi"                   -- Column editing
   use "tpope/vim-commentary"                     -- Helpers for easy code comments
@@ -62,8 +62,9 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim"                  -- Project detection
   use 'janko/vim-test'                           -- Run tests from vim
   use 'nvim-treesitter/nvim-treesitter'          -- Fancy language parser
-  use {       
-    "klen/nvim-config-local",                    -- Load local vimrc configs, the configuration needs to be included.
+  use "prettier/vim-prettier"
+  use 'hashivim/vim-terraform'                   -- Terraform support
+  use {       "klen/nvim-config-local",                    -- Load local vimrc configs, the configuration needs to be included.
     config = function()                     
       require('config-local').setup {
         -- Default configuration (optional)
@@ -80,16 +81,20 @@ return packer.startup(function(use)
   use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
-  use "hrsh7th/cmp-nvim-lsp" -- Required by the lsp plugin
   use "hrsh7th/cmp-path" -- path completions
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
+  use 'hrsh7th/cmp-nvim-lsp' -- lsp completions
+  use 'AndrewRadev/splitjoin.vim' -- splitjoin
 
   -- Snippets
   use "L3MON4D3/LuaSnip" --snippet engine
 
   -- Colorschemes
-  -- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
+  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
   use "lunarvim/darkplus.nvim"
+  use "artanikin/vim-synthwave84"
+  use "tanvirtin/monokai.nvim"
+  use 'shaunsingh/solarized.nvim'
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -100,16 +105,23 @@ return packer.startup(function(use)
   use("ryanoasis/vim-devicons") -- Icons for NERDTree
 
   -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-
-  -- Copilot
-  use "github/copilot.vim"
+  use {
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+  }
 
   -- Find and replace
   use 'windwp/nvim-spectre'
+
+  -- Copilot
+  use 'github/copilot.vim'
+
+  -- Statusline
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
