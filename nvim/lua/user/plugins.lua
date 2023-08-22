@@ -46,12 +46,11 @@ return packer.startup(function(use)
   use "FooSoft/vim-argwrap"                      -- Argument wrapping and unwrapping
   use "cespare/vim-toml"                         -- Toml syntax
   use "cohama/lexima.vim"                        -- Auto close parentheses, ruby blocks and more
-  use "jremmen/vim-ripgrep"                      -- Global grep, faster than usual grep
   use "leafgarland/typescript-vim"               -- Typescript syntax
   use "peitalin/vim-jsx-typescript"              -- Better jsx highlighting
   use "matze/vim-move"                           -- Move lines easily
   use "mg979/vim-visual-multi"                   -- Column editing
-  use "tpope/vim-commentary"                     -- Helpers for easy code comments
+  use "tomtom/tcomment_vim"                      -- Commenting
   use "tpope/vim-dispatch"                       -- Dispatch tests from vim
   use "tpope/vim-fugitive"                       -- Git goodies
   use "tpope/vim-rhubarb"                        -- Gihtub hooks for vim fugitive
@@ -62,9 +61,11 @@ return packer.startup(function(use)
   use "ahmedkhalf/project.nvim"                  -- Project detection
   use 'janko/vim-test'                           -- Run tests from vim
   use 'nvim-treesitter/nvim-treesitter'          -- Fancy language parser
-  use "prettier/vim-prettier"
+  use "prettier/vim-prettier"                    -- Prettier formatter
   use 'hashivim/vim-terraform'                   -- Terraform support
-  use {       "klen/nvim-config-local",                    -- Load local vimrc configs, the configuration needs to be included.
+  use 'szw/vim-maximizer'                        -- Maximize the current window
+  use {                                          -- Load local vimrc configs, the configuration needs to be included.
+    "klen/nvim-config-local",          
     config = function()                     
       require('config-local').setup {
         -- Default configuration (optional)
@@ -78,31 +79,37 @@ return packer.startup(function(use)
   }
 
   -- Command completions
-  use "hrsh7th/nvim-cmp" -- The completion plugin
   use "hrsh7th/cmp-buffer" -- buffer completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions
   use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/nvim-cmp" -- The completion plugin
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
-  use 'hrsh7th/cmp-nvim-lsp' -- lsp completions
   use 'AndrewRadev/splitjoin.vim' -- splitjoin
+  use 'hrsh7th/cmp-nvim-lsp' -- lsp completions
 
   -- Snippets
   use "L3MON4D3/LuaSnip" --snippet engine
 
   -- Colorschemes
-  use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-  use "lunarvim/darkplus.nvim"
   use "artanikin/vim-synthwave84"
+  use "ellisonleao/gruvbox.nvim"
+  use "lunarvim/colorschemes" -- A bunch of colorschemes
+  use "lunarvim/darkplus.nvim"
   use "tanvirtin/monokai.nvim"
   use 'shaunsingh/solarized.nvim'
 
   -- Telescope
-  use "nvim-telescope/telescope.nvim"
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+  use {
+    "nvim-telescope/telescope.nvim",
+    requires = { 
+      "nvim-lua/plenary.nvim",
+      "BurntSushi/ripgrep"
+    },
+  }
 
-  -- NerdTree
-  use("preservim/nerdtree") -- Best tree navigator
-  use("ryanoasis/vim-devicons") -- Icons for NERDTree
+  -- nvim-tree
+  use "nvim-tree/nvim-tree.lua"
+  use "nvim-tree/nvim-web-devicons"
 
   -- LSP
   use {
@@ -122,6 +129,30 @@ return packer.startup(function(use)
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
+
+  -- Floating cmd line
+  use {
+    'VonHeikemen/fine-cmdline.nvim',
+    requires = {
+      'MunifTanjim/nui.nvim'
+    }
+  }
+
+  -- Python black formatter
+  use 'psf/black'
+
+  -- ChatGPT in neovim
+  use({
+    "Bryley/neoai.nvim",
+    config = function()
+      vim.notify("Running NeoAI setup!")
+      require("neoai").setup()
+    end,
+    requires = {
+      "MunifTanjim/nui.nvim"
+    }
+  })
+
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

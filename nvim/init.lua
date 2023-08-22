@@ -13,4 +13,5 @@ require "user.vim-test"
 require "user.prettier"
 require "user.mason"
 require "user.lualine"
-require "user.nerdtree"
+require "user.black"
+require 'user.nvim-tree'
