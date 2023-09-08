@@ -57,6 +57,7 @@ keymap("n", "<leader>b", ":Buffers<CR>", opts)
 
 -- nvim-tree
 keymap("n", "<leader>m", ":NvimTreeFindFileToggle<CR>", opts)
+keymap("n", "<leader>m!", ":NvimTreeFindFileToggle!<CR>", opts)
 
 -- Spectre
 keymap("n", "<leader>R", "<cmd>lua require('spectre').open()<CR>", opts)
@@ -91,4 +92,4 @@ vim.keymap.set({'n', 'v'}, '<leader>Y', '"+Y') -- yank line
 
 -- NeoAI --
 vim.keymap.set('v', '<leader>ai', ":NeoAIInjectContext ")
-vim.keymap.set('n', '<leader>ai', ':NeoAIToggle<CR>')
+vim.keymap.set('n', '<leader>ai', ':NeoAIContext<CR>')
