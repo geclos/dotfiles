@@ -1,0 +1,10 @@
+{
+  "typed": {
+    "prefix": "fc",
+    "body": [
+      "export default function ${1:methodName}(${2:arguments}) {",
+      " return ${3:variableName}",
+      "}"
+    ]
+  }
+}

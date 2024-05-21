@@ -67,6 +67,9 @@ local WIDTH_RATIO = 0.5
 
 require("nvim-tree").setup({
   sort_by = "case_sensitive",
+  filters = {
+    git_ignored = false
+  },
   view = {
     float = {
       enable = true,

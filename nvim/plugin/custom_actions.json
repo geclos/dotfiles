@@ -1,0 +1,14 @@
+{
+  "edit_chat": {
+    "type": "chat",
+    "opts": {
+      "strategy": "display",
+      "params": { 
+        "model": "gpt-4-0125-preview",
+        "stop": [
+          "```"
+        ]
+      }
+    }
+  }
+}

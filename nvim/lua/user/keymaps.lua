@@ -90,6 +90,26 @@ keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 vim.keymap.set({'n', 'v'}, '<leader>y', '"+y') -- yank motion
 vim.keymap.set({'n', 'v'}, '<leader>Y', '"+Y') -- yank line
 
+-- ChatGPT --
+-- vim.keymap.set('n', '<leader>ai', ':ChatGPT<CR>')
+-- vim.keymap.set({'n', 'v'}, '<leader>aie', ':ChatGPTEditWithInstructions<CR>')
+
 -- NeoAI --
-vim.keymap.set('v', '<leader>ai', ":NeoAIInjectContext ")
-vim.keymap.set('n', '<leader>ai', ':NeoAIContext<CR>')
+-- vim.keymap.set('n', '<leader>ai', ':NeoAIToggle<CR>')
+-- vim.keymap.set('n', '<leader>aic', ':NeoAIContext<CR>')
+-- vim.keymap.set('v', '<leader>ai', ":NeoAIContext<CR>")
+
+-- Another ChatGPT plugin --
+vim.keymap.set("n", "<leader>ai", "<cmd>GpChatNew vsplit<cr>", opts)
+vim.keymap.set("n", "<leader>aic", "<cmd>% GpChatNew vsplit<cr>", opts)
+vim.keymap.set("n", "<leader>aif", "<cmd>GpChatFinder<cr>", opts)
+vim.keymap.set("n", "<leader>ait", "<cmd>GpChatToggle vsplit<cr>", opts)
+vim.keymap.set("v", "<leader>ai", ":<C-u>'<,'>GpChatNew vsplit<cr>", opts)
+vim.keymap.set("v", "<leader>air", ":<C-u>'<,'>GpRewrite<cr>", opts)
+
+
+-- Github --
+vim.keymap.set('n', '<leader>gg', ':GBrowse<CR>')
+
+-- Trouble --
+vim.keymap.set('n', '<leader>xx', ':TroubleToggle<CR>')

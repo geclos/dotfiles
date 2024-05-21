@@ -1,17 +1,19 @@
 -- Lua
+vim.cmd [[filetype plugin on]] -- Enable filetype detection, check ftplugin folder
+
 require "user.options"
 require "user.plugins"
 require "user.keymaps"
 require "user.alpha"
-require "user.cmp" 
-require "user.indent-blankline"
-require "user.project"
+require "user.cmp"
 require "user.colorscheme"
-require "user.copilot"
+require "user.fugitive"
+require "user.lualine" 
+require "user.mason" 
+require "user.nvim-tree"
+require "user.prettier" 
+require "user.project" 
 require "user.telescope"
-require "user.vim-test"
-require "user.prettier"
-require "user.mason"
-require "user.lualine"
-require "user.black"
-require 'user.nvim-tree'
+require "user.vim-test" 
+require "user.treesitter" 
+
