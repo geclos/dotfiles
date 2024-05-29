@@ -15,15 +15,24 @@ vim.g.maplocalleader = " "
 --   insert_mode = "i",
 --   visual_mode = "v",
 --   visual_block_mode = "x",
---   term_mode = "t",
 --   command_mode = "c",
+--   term_mode = "t",
 
 -- Normal --
+-- Fast file closing
+keymap("n", "<C-c>", ":wq<CR>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+keymap('n', '<C-h>', ':TmuxNavigateLeft<CR>', opts)
+keymap('n', '<C-j>', ':TmuxNavigateDown<CR>', opts)
+keymap('n', '<C-k>', ':TmuxNavigateUp<CR>', opts)
+keymap('n', '<C-l>', ':TmuxNavigateRight<CR>', opts)
+
+-- faster scrolling
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 

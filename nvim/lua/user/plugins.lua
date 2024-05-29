@@ -265,11 +265,14 @@ use {
   requires = 'godlygeek/tabular'
 }
 
--- install without yarn or npm
+-- Better markdown previews
 use({
     "iamcco/markdown-preview.nvim",
     run = function() vim.fn["mkdp#util#install"]() end,
 })
+
+-- Tmux integration
+use 'christoomey/vim-tmux-navigator'
 
 
 -- Automatically set up your configuration after cloning packer.nvim
