@@ -17,10 +17,10 @@ end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd [[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
+augroup packer_user_config
+autocmd!
+autocmd BufWritePost plugins.lua source <afile> | PackerSync
+augroup end
 ]]
 
 -- Use a protected call so we don't error out on first use
@@ -56,7 +56,12 @@ return packer.startup(function(use)
   use "wellle/targets.vim"                       -- Enhancements to Vim's text selection
   use "goolord/alpha-nvim"                       -- Welcome screen
   use "ahmedkhalf/project.nvim"                  -- Project detection
-  use 'janko/vim-test'                           -- Run tests from vim
+  use {
+    'janko/vim-test',
+    requires = {
+      'benmills/vimux' 
+    }
+  }-- Run tests from vim
   use "prettier/vim-prettier"                    -- Prettier formatter
   use 'hashivim/vim-terraform'                   -- Terraform support
   use 'szw/vim-maximizer'                        -- Maximize the current window
