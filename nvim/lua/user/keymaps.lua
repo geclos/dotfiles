@@ -1,113 +1,151 @@
+local wk = require("which-key")
 local opts = { noremap = true, silent = true }
-
 local term_opts = { silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+-- Leader key
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   command_mode = "c",
---   term_mode = "t",
+-- Basic mappings
+keymap("", "<Space>", "<Nop>", opts) -- Remap space as leader key
 
--- Normal --
--- Fast file closing
-keymap("n", "<C-c>", ":wq<CR>", opts)
+-- General mappings
+wk.register({
+  ["<C-c>"] = { ":wq<CR>", "Fast file closing" },
+  ["<C-h>"] = { "<cmd>TmuxNavigateLeft<CR>", "Tmux Navigate Left" },
+  ["<C-j>"] = { "<cmd>TmuxNavigateDown<CR>", "Tmux Navigate Down" },
+  ["<C-k>"] = { "<cmd>TmuxNavigateUp<CR>", "Tmux Navigate Up" },
+  ["<C-l>"] = { "<cmd>TmuxNavigateRight<CR>", "Tmux Navigate Right" },
+  ["<C-d>"] = { "<C-d>zz", "Faster scrolling down" },
+  ["<C-u>"] = { "<C-u>zz", "Faster scrolling up" },
+  ["<S-l>"] = { ":bnext<CR>", "Next buffer" },
+  ["<S-h>"] = { ":bprevious<CR>", "Previous buffer" },
+}, {
+  mode = "n",
+  opts = opts
+})
 
--- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
-keymap('n', '<C-h>', ':TmuxNavigateLeft<CR>', opts)
-keymap('n', '<C-j>', ':TmuxNavigateDown<CR>', opts)
-keymap('n', '<C-k>', ':TmuxNavigateUp<CR>', opts)
-keymap('n', '<C-l>', ':TmuxNavigateRight<CR>', opts)
+-- Visual mappings
+wk.register({
+  ["<C-j>"] = { "<Esc>:m .+1<CR>==g", "Move text down" },
+  ["<C-k>"] = { "<Esc>:m .-2<CR>==g", "Move text up" }
+}, {
+  mode = "v",
+  opts = opts
+})
 
--- faster scrolling
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
+-- File and Buffer Handling via Telescope
+wk.register({
+  ["<leader><leader>"] = { ":Telescope find_files<CR>", "Find files" },
+  ["<leader>g"] = { ":Telescope live_grep<CR>", "Live grep" },
+  ["<leader>b"] = { ":Buffers<CR>", "Buffer list" }
+}, {
+  mode = "n",
+  opts = opts
+})
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
-
--- Close current buffer
-keymap("n", "<leader>c", ":q", opts)
-
--- Visual --
--- Move text up and down
-keymap("v", "<C-j>", "<Esc>:m .+1<CR>==g", opts)
-keymap("v", "<C-k>", "<Esc>:m .-2<CR>==g", opts)
-
--- Telescope
-keymap("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>g", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>b", ":Buffers<CR>", opts)
-
--- nvim-tree
-keymap("n", "<leader>m", ":NvimTreeFindFileToggle<CR>", opts)
-keymap("n", "<leader>m!", ":NvimTreeFindFileToggle!<CR>", opts)
+-- Nvim-tree
+wk.register({
+  ["<leader>m"] = { ":NvimTreeFindFileToggle<CR>", "Toggle NvimTree" },
+  ["<leader>m!"] = { ":NvimTreeFindFileToggle!<CR>", "Toggle NvimTree aggressively" }
+}, {
+  mode = "n",
+  opts = opts
+})
 
 -- Spectre
-keymap("n", "<leader>R", "<cmd>lua require('spectre').open()<CR>", opts)
+wk.register({
+  ["<leader>R"] = { "<cmd>lua require('spectre').open()<CR>", "Open Spectre" }
+}, {
+  mode = "n",
+  opts = opts
+})
 
 -- vim-test
-keymap("n", "<leader>tf", ":TestFile -strategy=neovim<CR>", opts) 
-keymap("n", "<leader>tl", ":TestNearest -strategy=neovim<CR>", opts) 
-keymap("n", "<leader>tr", ":TestLast -strategy=neovim<CR>", opts) 
-keymap("n", "<leader>to", ":Copen -strategy=neovim<CR>", opts) 
+wk.register({
+  ["<leader>tf"] = { ":TestFile -strategy=neovim<CR>", "Test File" }, 
+  ["<leader>tl"] = { ":TestNearest -strategy=neovim<CR>", "Test Nearest" }, 
+  ["<leader>tr"] = { ":TestLast -strategy=neovim<CR>", "Test Last" }, 
+  ["<leader>to"] = { ":Copen -strategy=neovim<CR>", "Open Test Output" }
+}, {
+  mode = "n",
+  opts = opts
+})
 
 -- vim argwrap
-keymap("n", "<leader>a", ":ArgWrap<CR>", opts)
+wk.register({
+  ["<leader>a"] = { ":ArgWrap<CR>", "ArgWrap" }
+}, {
+  mode = "n",
+  opts = opts
+})
 
 -- vim maximizer
-keymap("n", "<leader>f", ":MaximizerToggle!<CR>", opts)
+wk.register({
+  ["<leader>f"] = { ":MaximizerToggle!<CR>", "Toggle Maximizer" }
+}, {
+  mode = "n",
+  opts = opts
+})
 
--- Terminal --
--- Better terminal navigation
-keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
-keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
-keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
-keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
+-- LSP
+wk.register({
+  K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+  gD = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to Definition" },
+  gR = { "<cmd>lua vim.lsp.buf.references()<CR>", "Go to References" }
+}, {
+  mode = "n",
+  opts = opts
+})
 
--- LSP --
-keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-keymap("n", "gD", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-keymap("n", "gR", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+-- Terminal Navigation
+for _, mode in pairs({"t", "n"}) do
+  wk.register({
+    ["<C-h>"] = { "<C-\\><C-N><C-w>h", "Terminal left" },
+    ["<C-j>"] = { "<C-\\><C-N><C-w>j", "Terminal down" },
+    ["<C-k>"] = { "<C-\\><C-N><C-w>k", "Terminal up" },
+    ["<C-l>"] = { "<C-\\><C-N><C-w>l", "Terminal right" }
+  }, {
+    mode = mode,
+    opts = term_opts
+  })
+end
 
--- Clipboard goodies --
-vim.keymap.set({'n', 'v'}, '<leader>y', '"+y') -- yank motion
-vim.keymap.set({'n', 'v'}, '<leader>Y', '"+Y') -- yank line
+-- Clipboard
+wk.register({
+  ["<leader>y"] = { '"+y', "Yank-motion" },
+  ["<leader>Y"] = { '"+Y', "Yank-line" }
+}, {
+  mode = {"n", "v"}
+})
 
--- ChatGPT --
-vim.keymap.set('n', '<leader>ai', ':ChatGPT<CR>')
-vim.keymap.set({'n', 'v'}, '<leader>aie', ':ChatGPTEditWithInstructions<CR>')
+-- Another ChatGPT Plugin
+wk.register({
+  ["<leader>ai"] = { "<cmd>GpChatNew vsplit<cr>", "GP Chat New" },
+  ["<leader>aic"] = { "<cmd>% GpChatNew vsplit<cr>", "GP Chat New Entire Buffer" },
+  ["<leader>aif"] = { "<cmd>GpChatFinder<cr>", "GP Chat Finder" },
+  ["<leader>ait"] = { "<cmd>GpChatToggle vsplit<cr>", "GP Chat Toggle" },
+  ["<leader>air"] = { ":<C-u>'<,'>GpRewrite<cr>", "GP Chat Rewrite" }
+}, {
+  mode = {"n", "v"},
+  opts = opts
+})
 
--- NeoAI --
-vim.keymap.set('n', '<leader>ai', ':NeoAIToggle<CR>')
-vim.keymap.set('n', '<leader>aic', ':NeoAIContext<CR>')
-vim.keymap.set('v', '<leader>ai', ":NeoAIContext<CR>")
+-- GitHub
+wk.register({
+  ["<leader>gg"] = { ':GBrowse<CR>', "GitHub Browse" }
+}, {
+  mode = "n",
+  opts = opts
+})
 
--- Another ChatGPT plugin --
-vim.keymap.set("n", "<leader>ai", "<cmd>GpChatNew vsplit<cr>", opts)
-vim.keymap.set("n", "<leader>aic", "<cmd>% GpChatNew vsplit<cr>", opts)
-vim.keymap.set("n", "<leader>aif", "<cmd>GpChatFinder<cr>", opts)
-vim.keymap.set("n", "<leader>ait", "<cmd>GpChatToggle vsplit<cr>", opts)
-vim.keymap.set("v", "<leader>ai", ":<C-u>'<,'>GpChatNew vsplit<cr>", opts)
-vim.keymap.set("v", "<leader>air", ":<C-u>'<,'>GpRewrite<cr>", opts)
-
-
--- Github --
-vim.keymap.set('n', '<leader>gg', ':GBrowse<CR>')
-
--- Trouble --
-vim.keymap.set('n', '<leader>xx', ':TroubleToggle<CR>')
+-- Trouble
+wk.register({
+  ["<leader>xx"] = { ':TroubleToggle<CR>', "Trouble Toggle" }
+}, {
+  mode = "n",
+  opts = opts
+})

@@ -282,6 +282,19 @@ use 'christoomey/vim-tmux-navigator'
 -- Rose pine colorscheme
 use "rose-pine/neovim"
 
+-- Popup with keybinding suggestions
+use {
+  "folke/which-key.nvim",
+  config = function()
+    vim.o.timeout = true
+    vim.o.timeoutlen = 300
+    require("which-key").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    }
+  end
+}
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins
