@@ -54,7 +54,7 @@ return packer.startup(function(use)
   use "tpope/vim-rhubarb"                        -- Gihtub hooks for vim fugitive
   use "tpope/vim-surround"                       -- Surround helpers
   use "wellle/targets.vim"                       -- Enhancements to Vim's text selection
-  use "goolord/alpha-nvim"                       -- Welcome screen
+  use 'goolord/alpha-nvim'                       -- Welcome screen
   use "ahmedkhalf/project.nvim"                  -- Project detection
   use {
     'janko/vim-test',
@@ -148,7 +148,7 @@ use {
 -- Statusline
 use {
   'nvim-lualine/lualine.nvim',
-  requires = { 'kyazdani42/nvim-web-devicons', opt = true }
+  requires = { 'nvim-tree/nvim-web-devicons', opt = true }
 }
 
 -- Floating cmd line
@@ -278,6 +278,9 @@ use({
 
 -- Tmux integration
 use 'christoomey/vim-tmux-navigator'
+
+-- Rose pine colorscheme
+use "rose-pine/neovim"
 
 
 -- Automatically set up your configuration after cloning packer.nvim

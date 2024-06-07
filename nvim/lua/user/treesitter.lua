@@ -11,9 +11,10 @@
 
 
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "lua", "query", "javascript", "typescript" },
+  ensure_installed = { "lua", "javascript", "typescript" },
   sync_install = false,
   auto_install = true,
+  ignore_install = { "vimdoc" },
   highlight = {
     enable = true,
     -- Setting this to true will run `:h syntax` and tree-sitter at the same time.

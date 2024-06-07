@@ -13,4 +13,6 @@
 -- endtry
 -- ]]
 
-vim.cmd.colorscheme "catppuccin"
+-- vim.cmd.colorscheme "catppuccin-mocha"
+
+vim.cmd.colorscheme "rose-pine"

@@ -44,20 +44,9 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>c", ":q", opts)
 
 -- Visual --
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
 -- Move text up and down
 keymap("v", "<C-j>", "<Esc>:m .+1<CR>==g", opts)
 keymap("v", "<C-k>", "<Esc>:m .-2<CR>==g", opts)
-
--- Visual Block --
--- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-keymap("x", "<C-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<C-k>", ":move '<-2<CR>gv-gv", opts)
 
 -- Telescope
 keymap("n", "<leader><leader>", ":Telescope find_files<CR>", opts)
@@ -100,13 +89,13 @@ vim.keymap.set({'n', 'v'}, '<leader>y', '"+y') -- yank motion
 vim.keymap.set({'n', 'v'}, '<leader>Y', '"+Y') -- yank line
 
 -- ChatGPT --
--- vim.keymap.set('n', '<leader>ai', ':ChatGPT<CR>')
--- vim.keymap.set({'n', 'v'}, '<leader>aie', ':ChatGPTEditWithInstructions<CR>')
+vim.keymap.set('n', '<leader>ai', ':ChatGPT<CR>')
+vim.keymap.set({'n', 'v'}, '<leader>aie', ':ChatGPTEditWithInstructions<CR>')
 
 -- NeoAI --
--- vim.keymap.set('n', '<leader>ai', ':NeoAIToggle<CR>')
--- vim.keymap.set('n', '<leader>aic', ':NeoAIContext<CR>')
--- vim.keymap.set('v', '<leader>ai', ":NeoAIContext<CR>")
+vim.keymap.set('n', '<leader>ai', ':NeoAIToggle<CR>')
+vim.keymap.set('n', '<leader>aic', ':NeoAIContext<CR>')
+vim.keymap.set('v', '<leader>ai', ":NeoAIContext<CR>")
 
 -- Another ChatGPT plugin --
 vim.keymap.set("n", "<leader>ai", "<cmd>GpChatNew vsplit<cr>", opts)
