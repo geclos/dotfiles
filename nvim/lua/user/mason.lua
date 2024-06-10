@@ -4,6 +4,7 @@ require("mason").setup()
 require("mason-lspconfig").setup()
 
 -- languages
+require 'lspconfig'.lua_ls.setup{}
 require 'lspconfig'.svelte.setup{}
 require 'lspconfig'.tsserver.setup{}
 require 'lspconfig'.pyright.setup{

@@ -1,4 +1,5 @@
 local options = {
+  foldenable = false,                      -- disable folding
   cursorline = true,                       -- highlight the current line
   expandtab = true,                        -- convert tabs to spaces
   number = true,                           -- set numbered lines

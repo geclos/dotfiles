@@ -107,6 +107,7 @@ cmp.setup {
     { name = "luasnip" },
     { name = "path" },
     { name = "buffer" },
+    { name = "lazydev" }
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,
