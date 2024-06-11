@@ -12,9 +12,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Plugin definitions
 local plugins = {
-  -- Utilities
   { "nvim-lua/plenary.nvim" },
   { "FooSoft/vim-argwrap" },
   { "cohama/lexima.vim" },
@@ -58,16 +56,6 @@ local plugins = {
   { "saadparwaiz1/cmp_luasnip" },
   { "AndrewRadev/splitjoin.vim" },
   { "hrsh7th/cmp-nvim-lsp" },
-
-  -- Copilot
-  {
-    "zbirenbaum/copilot-cmp",
-    dependencies = { "zbirenbaum/copilot.lua" },
-    config = function()
-      require("copilot_cmp").setup()
-    end,
-  },
-  
   { "L3MON4D3/LuaSnip" },
 
   -- Colorschemes
@@ -103,17 +91,7 @@ local plugins = {
   { "windwp/nvim-spectre" },
 
   -- Copilot
-  {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    event = "InsertEnter",
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end,
-  },
+  { "github/copilot.vim" },
 
   -- Statusline
   {
