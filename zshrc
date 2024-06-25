@@ -9,14 +9,9 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "xylous/gitstatus"
+zplug "spaceship-prompt/spaceship-prompt", use:spaceship.zsh, from:github, as:theme
 
 zplug load
-
-source ~/.keybindings.zsh
-
-# fnm
-export PATH="/Users/gerardclos/Library/Application Support/fnm:$PATH"
-eval "`fnm env`"
 
 # OpenAI
 export OPENAI_API_KEY="sk-TRY_SCRAPPING_THIS"
@@ -31,9 +26,6 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 #   -----------------------------
 #   KEYBINDINGS
@@ -75,3 +67,10 @@ alias vim='nvim'
 
 # Remap gi to git
 alias gi='git'
+
+# Mise https://github.com/jdx/mise
+eval "$(/Users/gerardclos/.local/bin/mise activate zsh)"
+
+# autosuggest-accept widget to shift+tab
+bindkey '^[[Z' autosuggest-accept
+
