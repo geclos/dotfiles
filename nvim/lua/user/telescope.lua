@@ -13,8 +13,9 @@ telescope.setup {
       "cassettes/",
       "sorbet/",
       "vendor/",
-      ".Git/",
+      ".git/",
       "tmp/",
+      "drizzle/meta/"
     },
     prompt_prefix = " ",
     selection_caret = " ",
@@ -85,12 +86,13 @@ telescope.setup {
     },
   },
   pickers = {
-    -- Default configuration for builtin pickers goes here:
-    -- picker_name = {
-    --   picker_config_key = value,
-    --   ...
-    -- }
-    -- Now the picker_config_key will be applied every time you call this
-    -- builtin picker
+    find_files = {
+      hidden = true
+    },
+    live_grep = {
+      additional_args = function()
+        return {"--smart-case"}
+      end
+    }
   }
 }

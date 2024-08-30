@@ -1,11 +1,10 @@
-nvim_lsp = require('lspconfig')
-
 require("mason").setup()
 require("mason-lspconfig").setup()
 
 -- languages
-require 'lspconfig'.lua_ls.setup{}
-require 'lspconfig'.svelte.setup{}
+-- require 'lspconfig'.clangd.setup{}
+-- require 'lspconfig'.lua_ls.setup{}
+-- require 'lspconfig'.svelte.setup{}
 require 'lspconfig'.tsserver.setup{}
 require 'lspconfig'.pyright.setup{
   on_new_config = function(new_config, root_dir)

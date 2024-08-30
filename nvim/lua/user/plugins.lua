@@ -22,6 +22,7 @@ local plugins = {
   { "tomtom/tcomment_vim" },
   { "tpope/vim-dispatch" },
   { "tpope/vim-fugitive" },
+  { "sindrets/diffview.nvim" },
   { "tpope/vim-rhubarb" },
   { "tpope/vim-surround" },
   { "wellle/targets.vim" },
@@ -48,6 +49,9 @@ local plugins = {
     end,
   },
 
+  -- Snippets
+  { "L3MON4D3/LuaSnip" },
+
   -- Command completions
   { "hrsh7th/cmp-buffer" },
   { "hrsh7th/cmp-cmdline" },
@@ -56,7 +60,6 @@ local plugins = {
   { "saadparwaiz1/cmp_luasnip" },
   { "AndrewRadev/splitjoin.vim" },
   { "hrsh7th/cmp-nvim-lsp" },
-  { "L3MON4D3/LuaSnip" },
 
   -- Colorschemes
   { "artanikin/vim-synthwave84" },
@@ -111,6 +114,30 @@ local plugins = {
   -- ChatGPT plugin
   { "robitx/gp.nvim" },
 
+  -- Cursor-style AI chat
+  {
+  "yetone/avante.nvim",
+    event = "VeryLazy",
+    build = "make",
+    opts = {
+      -- add any opts here
+    },
+    dependencies = {
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      --- The below is optional, make sure to setup it properly if you have lazy=true
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
+  },
+
   -- Trouble
   {
     "folke/trouble.nvim",
@@ -122,10 +149,6 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate"
-  },
-  {
-    "preservim/vim-markdown",
-    dependencies = { "godlygeek/tabular" },
   },
 
   -- Better markdown previews
@@ -142,17 +165,6 @@ local plugins = {
   -- Rose pine colorscheme
   { "rose-pine/neovim" },
 
-  -- Popup with keybinding suggestions
-  {
-    "folke/which-key.nvim",
-    config = function()
-      vim.o.timeout = true
-      vim.o.timeoutlen = 300
-      require("which-key").setup {
-        -- Configuration here (if any)
-      }
-    end,
-  },
   {
     "folke/lazydev.nvim",
     ft = "lua", -- only load on lua files
@@ -165,6 +177,7 @@ local plugins = {
     },
   },
   { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
+  { "mbbill/undotree" }
 }
 
 require('lazy').setup(plugins)
