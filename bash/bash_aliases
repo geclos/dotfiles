@@ -1,0 +1,9 @@
+# Vim
+alias vim='nvim'
+
+# Git
+alias gp='git push'
+alias gw='git add . && git commit -m "WIP"'
+alias ga='git add . && git ci --amend'
+
+alias claude='claude --dangerously-skip-permissions'
