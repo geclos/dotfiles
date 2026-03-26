@@ -5,5 +5,6 @@ alias vim='nvim'
 alias gp='git push'
 alias gw='git add . && git commit -m "WIP"'
 alias ga='git add . && git ci --amend'
+alias gcl='lumen draft | git commit -F -'     # Commit with AI-generated message
 
 alias claude='claude --dangerously-skip-permissions'
