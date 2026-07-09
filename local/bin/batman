@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+usage() {
+  echo "Usage: batman <branch-name> [--create] [--base <base-branch-name>]" >&2
+}
+
+quote() {
+  local value=${1//\'/\'\\\'\'}
+  printf "'%s'" "$value"
+}
+
+if [[ $# -lt 1 ]]; then
+  usage
+  exit 2
+fi
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+branch=$1
+shift
+
+wt_args=("$branch")
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --create)
+      wt_args+=("--create")
+      shift
+      ;;
+    --base)
+      if [[ $# -lt 2 ]]; then
+        echo "batman: --base requires a value" >&2
+        usage
+        exit 2
+      fi
+      wt_args+=("--base" "$2")
+      shift 2
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "batman: unknown argument: $1" >&2
+      usage
+      exit 2
+      ;;
+  esac
+done
+
+if ! command -v tmux >/dev/null 2>&1; then
+  echo "batman: tmux is required" >&2
+  exit 1
+fi
+
+if ! command -v wt >/dev/null 2>&1; then
+  echo "batman: wt is required" >&2
+  exit 1
+fi
+
+session=$branch
+
+if tmux has-session -t "$session" 2>/dev/null; then
+  echo "batman: tmux session already exists: $session" >&2
+  exit 1
+fi
+
+wt_command="wt switch"
+for arg in "${wt_args[@]}"; do
+  wt_command+=" $(quote "$arg")"
+done
+
+setup_command="cp .env.example .env.development && pnpm i && pnpm build --filter @latitude-data/telemetry && pnpm build --filter @latitude-data/sdk"
+setup_pane_command="bash -lc $(quote "$setup_command; status=\$?; printf '\\n[batman setup exited with status %s]\\n' \"\$status\"; exec \"\${SHELL:-/bin/bash}\" -l")"
+bootstrap_command="$wt_command && tmux split-window -v -c \"\$PWD\" $(quote "$setup_pane_command")"
+
+pane_id=$(tmux new-session -d -P -F '#{pane_id}' -s "$session" -c "$PWD")
+tmux send-keys -t "$pane_id" "$bootstrap_command" C-m
+
+if [[ -n "${TMUX:-}" ]]; then
+  tmux switch-client -t "$session"
+else
+  tmux attach-session -t "$session"
+fi
