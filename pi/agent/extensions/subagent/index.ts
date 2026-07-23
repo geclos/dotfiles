@@ -467,11 +467,10 @@ export default function (pi: ExtensionAPI) {
 			`Default agent scope is "user" (from ${path.join(getAgentDir(), "agents")}).`,
 			`To enable project-local agents in ${CONFIG_DIR_NAME}/agents, set agentScope: "both" (or "project").`,
 		].join(" "),
-		promptSnippet: "Delegate focused work or high-quality adversarial review to isolated subagents",
+		promptSnippet: "Delegate focused work to isolated subagents, or run adversarial review when explicitly requested",
 		promptGuidelines: [
 			"For non-trivial implementation, investigation, or other focused execution, use subagent with agent `minion` when the Terra model is sufficient.",
-			"For critique or review of code, diffs, specs, plans, architecture, ideas, arguments, or other artifacts, use subagent with agent `adversarial-reviewer`.",
-			"When maximum review quality is useful, run multiple `adversarial-reviewer` tasks in subagent parallel mode with distinct, non-overlapping lenses, then synthesize their findings and adjudicate disagreements.",
+			"Use subagent with agent `adversarial-reviewer` only when the user explicitly asks for that subagent. Do not select it for ordinary review, critique, validation, or quality checks.",
 			"Use subagent parallel mode for independent, non-overlapping work packets that can run concurrently.",
 			"Give every subagent concrete scope, all conversation context it cannot otherwise see, relevant files or commands, repository constraints, and the exact report needed.",
 			"Do not duplicate delegated work while subagents run; coordinate, inspect their results, reconcile conflicts, and perform final verification.",
