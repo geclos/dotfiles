@@ -121,9 +121,10 @@ export default function (pi: ExtensionAPI) {
       "Delegate one focused code implementation or low-level work packet to a Terra subagent with an isolated context.",
     promptSnippet: "Delegate one focused implementation work packet to the Terra minion",
     promptGuidelines: [
-      "Use advisor before minion for non-trivial delegation, then use minion for focused implementation or low-level work.",
-      "Give minion exact scope, relevant context, constraints, and verification commands.",
-      "Do not edit the same files while minion runs. Inspect its changes and run final verification yourself.",
+      "For non-trivial delegated work, consult advisor before delegating to minion.",
+      "Use minion by default for self-contained implementation and low-level work, including focused investigation, mechanical or repetitive edits, migrations, and test writing.",
+      "The main agent owns task decomposition, decisions, integration, and final verification; direct work is limited to tiny fixes, synthesis, final verification, explicitly user-requested direct work, or when minion is unavailable.",
+      "Give minion exact scope, relevant context, constraints, and verification commands. Do not edit the same files while it runs; inspect its changes afterward.",
     ],
     parameters: Type.Object(
       {
