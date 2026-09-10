@@ -1,0 +1,35 @@
+{
+  "settings": {
+    "autoAuth": true
+  },
+  "mcpServers": {
+    "xcode-tools": {
+      "command": "xcrun",
+      "args": [
+        "mcpbridge"
+      ]
+    },
+    "datadog": {
+      "url": "https://mcp.datadoghq.eu/api/unstable/mcp-server/mcp?toolsets=core,error-tracking",
+      "auth": "oauth",
+      "lifecycle": "lazy"
+    },
+    "exa": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "exa-mcp-server"
+      ],
+      "env": {
+        "EXA_API_KEY": "${EXA_API_KEY}"
+      },
+      "lifecycle": "lazy"
+    },
+    "executor": {
+      "url": "https://executor.sh/gerard-clos-s-organization/mcp",
+      "auth": "oauth",
+      "protocolVersion": "auto",
+      "lifecycle": "lazy"
+    }
+  }
+}
